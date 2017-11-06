@@ -50,13 +50,8 @@ class vMatchView
       
       $htmlout .='</td></tr>      
       </tbody>
-      <tfoot>
-        <tr style="background-color:#f1f1f1;">
-          <td>'.$match->hometeamobj->name.'</td>
-          <td> - </td>
-          <td>'.$match->awayteamobj->name.'</td>
-        </tr>
-        <tr style="background-color:#f1f1f1;">
+      <tfoot>        
+        <tr style="background-color:#f1f1f1;font-weight:bold;">
           <td>'.$match->hometeamgoals.'</td>
           <td> - </td>
           <td>'.$match->awayteamgoals.'</td>

@@ -37,15 +37,30 @@ class MatchClass
 		
 	}
 
+	function checkIfGoalScored($skill)
+	{
+		$goalfactor = 6000;
+
+		if($skill>mt_rand(0,$goalfactor))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 	function makeGameLog($currentminute)
 	{
-		if($this->hometeamobj->skill>mt_rand(0,6000))
+		if($this->checkIfGoalScored($this->hometeamobj->skill))
 		{
 			$this->matchlog[$currentminute]['happening'] = $currentminute.' - '.$this->hometeamobj->name.' just scored a fantastic goal!';
 			$this->matchlog[$currentminute]['teamthatscored'] = 'hometeam';
 			$this->hometeamgoals++;
 		}
-		elseif($this->awayteamobj->skill>mt_rand(0,6000)) {
+		elseif($this->checkIfGoalScored($this->awayteamobj->skill)) 
+		{
 			$this->matchlog[$currentminute]['happening'] = $currentminute.' - '.$this->awayteamobj->name.' just scored a fantastic goal!';			
 			$this->matchlog[$currentminute]['teamthatscored'] = 'awayteam';
 			$this->awayteamgoals++;
