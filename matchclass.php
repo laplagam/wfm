@@ -41,11 +41,13 @@ class MatchClass
 	{
 		if($this->hometeamobj->skill>mt_rand(0,6000))
 		{
-			$this->matchlog[$currentminute] = $currentminute.' - '.$this->hometeamobj->name.' just scored a fantastic goal!<br/>';
+			$this->matchlog[$currentminute]['happening'] = $currentminute.' - '.$this->hometeamobj->name.' just scored a fantastic goal!';
+			$this->matchlog[$currentminute]['teamthatscored'] = 'hometeam';
 			$this->hometeamgoals++;
 		}
 		elseif($this->awayteamobj->skill>mt_rand(0,6000)) {
-			$this->matchlog[$currentminute] = $currentminute.' - '.$this->awayteamobj->name.' just scored a fantastic goal!<br/>';			
+			$this->matchlog[$currentminute]['happening'] = $currentminute.' - '.$this->awayteamobj->name.' just scored a fantastic goal!';			
+			$this->matchlog[$currentminute]['teamthatscored'] = 'awayteam';
 			$this->awayteamgoals++;
 		}
 		else
@@ -61,8 +63,7 @@ class MatchClass
 	{
 		echo $this->hometeamobj->name.' - '.$this->awayteamobj->name.'<br/>';
 		foreach ($this->matchlog as $value) 
-		{
-			
+		{			
 			echo $value;
 		}
 		echo $this->hometeamobj->name.' - '.$this->awayteamobj->name.'<br/>';

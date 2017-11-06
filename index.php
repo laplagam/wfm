@@ -5,6 +5,9 @@ ini_set('display_errors','1');
 require_once('matchclass.php');
 require_once('clubclass.php');
 require_once('views/viewmain.php');
+require_once('views/matchview.php');
+
+$matchview = new vMatchView();
 
 //Let's create Chelsea
 $chelsea = new ClubClass();
@@ -26,15 +29,15 @@ $match->runMatch();
 //Let's create the main view. 
 $mainview = new vMainView();
 
-
-
 //Let's add the header to the site
 echo $mainview->makeHeaderView();
 //Let's create the bootstrap top menu. 
 echo $mainview->createBootstrapTopMenu();
 
 //Let's display the match result log. 
-$match->printResult();
+echo $matchview->makeMatchTable($match);
+
+//$match->printResult();
 
 //Let's add the footer to the site
 echo $mainview->makeFooterView();
