@@ -4,8 +4,12 @@ ini_set('display_errors','1');
 
 require_once('models/matchclass.php');
 require_once('models/clubclass.php');
+require_once('models/fixtureclass.php');
 require_once('views/viewmain.php');
 require_once('views/matchview.php');
+
+$fixtures = new mFixtureClass();
+
 
 $matchview = new vMatchView();
 
@@ -33,6 +37,9 @@ $mainview = new vMainView();
 echo $mainview->makeHeaderView();
 //Let's create the bootstrap top menu. 
 echo $mainview->createBootstrapTopMenu();
+
+//For testing, let's show the generated  fiztures and see how it looks. 
+$fixtures->generateFixtures(2);
 
 //Let's display the match result log. 
 echo $matchview->makeMatchTable($match);
