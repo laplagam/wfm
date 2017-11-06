@@ -2,8 +2,8 @@
 
 ini_set('display_errors','1');
 
-require_once('matchclass.php');
-require_once('clubclass.php');
+require_once('models/matchclass.php');
+require_once('models/clubclass.php');
 require_once('views/viewmain.php');
 require_once('views/matchview.php');
 
