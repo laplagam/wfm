@@ -10,6 +10,11 @@ require_once('views/matchview.php');
 
 $fixtures = new mFixtureClass();
 
+$fixtures->makeFixtures();
+echo '<br/><br/>';
+$fixtures->showFixtures();
+exit('Ending script here while testing fixture generation. ');
+
 
 $matchview = new vMatchView();
 
