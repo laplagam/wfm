@@ -13,24 +13,48 @@ class mFixtureClass
   
   }
 
-  function makeFixtures()
+  function makeFixtures(PdoConnection $pdo)
   {
+    //This functionality imports fixtures from CSV file and loads it into the database. 
+
     $fixtures = fopen("csv/fixtures.csv", "r");
 
     $counter = 0;
+
+    $dbh = $pdo->getPdoCon();
+
+    $query = 'INSERT INTO tblfixtures(leagueid,gameweek,hometeamid,hometeamname,awayteamid,awayteamname) 
+      VALUES(:leagueid,:gameweek,:hometeamid,:hometeamname,:awayteamid,:awayteamname)';
+
+    $stmt = $dbh->prepare($query);
+
+    $stmt->bindParam(':leagueid',$leagueid,PDO::PARAM_INT);
+    $stmt->bindParam(':gameweek',$gameweek,PDO::PARAM_INT);
+    $stmt->bindParam(':hometeamid',$hometeamid,PDO::PARAM_INT);
+    $stmt->bindParam(':hometeamname',$hometeamname,PDO::PARAM_STR);
+    $stmt->bindParam(':awayteamid',$awayteamid,PDO::PARAM_INT);
+    $stmt->bindParam(':awayteamname',$awayteamname,PDO::PARAM_STR);
+    //$stmt->bindParam(':gameweek',$gameweek,PARAM::INT);
+
+    $leagueid = 1;
+    $awayteamid = 0;
+    $hometeamid = 0;
 
     while(!feof($fixtures))
     {
       $line_of_text = fgetcsv($fixtures, 10240,';');
       //var_dump($line_of_text);
       $counter++;
+      $gameweek = $line_of_text[0];
+      $hometeamname =$line_of_text[1];
+      $awayteamname =$line_of_text[3];
 
       echo utf8_encode($line_of_text[0]).' '.utf8_encode($line_of_text[1]).' '.utf8_encode($line_of_text[2]).' '.utf8_encode($line_of_text[3]).'<br/>';
-      if($counter == 100)
+      /*if($counter == 20)
       {
         exit('done with csv testing. ');
-      }
-
+      }*/
+      $stmt->execute();
     }
     //This functionality has limitation based on how many teams are added. 
     //First logic requires the amount of teams to be possible to subtract with 4.
