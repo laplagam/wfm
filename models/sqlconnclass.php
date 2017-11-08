@@ -12,7 +12,7 @@ class PdoConnection
 
     $dsn = 'mysql:dbname=dbwfm;host=localhost';
     $user = 'root';
-    $password = 'notgonnatellyou';
+    $password = 'Lars2000!';
 
     try
     {

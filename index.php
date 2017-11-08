@@ -5,14 +5,17 @@ ini_set('display_errors','1');
 require_once('models/matchclass.php');
 require_once('models/clubclass.php');
 require_once('models/fixtureclass.php');
+require_once('models/sqlconnclass.php');
 require_once('views/viewmain.php');
 require_once('views/matchview.php');
 
+$pdo = new PdoConnection();
+
 $fixtures = new mFixtureClass();
 
-$fixtures->makeFixtures();
+$fixtures->makeFixtures($pdo);
 echo '<br/><br/>';
-$fixtures->showFixtures();
+//$fixtures->showFixtures();
 exit('Ending script here while testing fixture generation. ');
 
 
