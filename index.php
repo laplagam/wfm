@@ -1,7 +1,7 @@
 <?php
 
 ini_set('display_errors','1');
-
+//header('Content-Type: text/html; charset=UTF-8');
 require_once('models/matchclass.php');
 require_once('models/clubclass.php');
 require_once('models/fixtureclass.php');

@@ -4,7 +4,7 @@ class mFixtureClass
 {
   var $fixture;
   var $allteamsarray = array(1=>'IK Start',2=>'Rosenborg',3=>'Brann', 
-    4=>'Molde', 5=>'Odd', 5=>'Bodø Glimt',7=>'Sogndal',8=>'Tromsø',
+    4=>'Molde', 5=>'Odd', 6=>'Bodø Glimt',7=>'Sogndal',8=>'Tromsø',
     9=>'Lillestrøm',10=>'Kristiansund BK',11=>'Sandefjord',12=>'Vålerenga',
     13=>'Stabæk',14=>'FK Haugesund',15=>'Strømsgodset',16=>'Sarpsborg 08');
 
@@ -15,34 +15,74 @@ class mFixtureClass
 
   function makeFixtures()
   {
+    $fixtures = fopen("csv/fixtures.csv", "r");
+
+    $counter = 0;
+
+    while(!feof($fixtures))
+    {
+      $line_of_text = fgetcsv($fixtures, 10240,';');
+      //var_dump($line_of_text);
+      $counter++;
+
+      echo utf8_encode($line_of_text[0]).' '.utf8_encode($line_of_text[1]).' '.utf8_encode($line_of_text[2]).' '.utf8_encode($line_of_text[3]).'<br/>';
+      if($counter == 100)
+      {
+        exit('done with csv testing. ');
+      }
+
+    }
     //This functionality has limitation based on how many teams are added. 
     //First logic requires the amount of teams to be possible to subtract with 4.
     
     //First we split into 2 sectors. This when placed on each side will form the first fixture. 
     //$fixture;
-    $gameweek = 1;
+
+    //Pre-set values. Add as parameters laters for different table generations. 
+    /*$gameweek = 1;
     $match = 1;
     $homeoraway = 1;
+    $numberofteams = 16;
 
+    
+
+    
     //Loop through all teams
     foreach($this->allteamsarray as $key=>$value)
     {
+      //
+      $this->fixture[$gameweek][$match][$homeoraway] = $value;
       if($homeoraway == 1)
       {
-        $this->fixture[$gameweek][$match][$homeoraway]
+        //First team, this will be the hometeam        
         $homeoraway++;
       }
       else
-      {
-        $this->fixture[$gameweek][$match][$homeoraway]
+      {        
+        //Second team, this will be the away team
         $homeoraway--;
         $match++;
-      }
-      
+        //OK, so first match is set, let's swap
+      }      
     }
-
+    
+    //First fixture is set. Based on this we now need to generate the remaining matches. 
+    while($gameweek<$numberofteams)
+    {
+      $gameweek++;
+    }
+    */
+    //First fixture successfully generated. Next is to make the remaining gameweeks. 
+    //$numberofgameweeks = 
 
   }
+
+  /*//Check if we have odd numers of teams. We simply don't allow it. Sorry :) 
+    if($numberofteams % 2 == 1) 
+    {
+      exit('Odd number of teams not supported. ');
+    }*/
+
   //Function used to see progress of the fixture generation. Test function. 
   function showFixtures()
   {

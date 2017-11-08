@@ -1,0 +1,241 @@
+Weeknumber;Hometeam;vs;Awayteam
+1;Strømsgodset;v;Sandefjord
+1;Sogndal;v;Odd
+1;FK Haugesund;v;Stabæk
+1;Vålerenga;v;IK Start
+1;Lillestrøm;v;Tromsø
+1;Rosenborg;v;Kristiansund BK
+1;Molde;v;Brann
+1;Bodø Glimt;v;Sarpsborg 08
+2;Odd;v;Strømsgodset
+2;Stabæk;v;Sandefjord
+2;IK Start;v;Sogndal
+2;Tromsø;v;FK Haugesund
+2;Kristiansund BK;v;Vålerenga
+2;Brann;v;Lillestrøm
+2;Sarpsborg 08;v;Rosenborg
+2;Bodø Glimt;v;Molde
+3;Strømsgodset;v;Stabæk
+3;Odd;v;IK Start
+3;Sandefjord;v;Tromsø
+3;Sogndal;v;Kristiansund BK
+3;FK Haugesund;v;Brann
+3;Vålerenga;v;Sarpsborg 08
+3;Lillestrøm;v;Bodø Glimt
+3;Rosenborg;v;Molde
+4;IK Start;v;Strømsgodset
+4;Tromsø;v;Stabæk
+4;Kristiansund BK;v;Odd
+4;Brann;v;Sandefjord
+4;Sarpsborg 08;v;Sogndal
+4;Bodø Glimt;v;FK Haugesund
+4;Molde;v;Vålerenga
+4;Rosenborg;v;Lillestrøm
+5;Strømsgodset;v;Tromsø
+5;IK Start;v;Kristiansund BK
+5;Stabæk;v;Brann
+5;Odd;v;Sarpsborg 08
+5;Sandefjord;v;Bodø Glimt
+5;Sogndal;v;Molde
+5;FK Haugesund;v;Rosenborg
+5;Vålerenga;v;Lillestrøm
+6;Kristiansund BK;v;Strømsgodset
+6;Brann;v;Tromsø
+6;Sarpsborg 08;v;IK Start
+6;Bodø Glimt;v;Stabæk
+6;Molde;v;Odd
+6;Rosenborg;v;Sandefjord
+6;Lillestrøm;v;Sogndal
+6;Vålerenga;v;FK Haugesund
+7;Strømsgodset;v;Brann
+7;Kristiansund BK;v;Sarpsborg 08
+7;Tromsø;v;Bodø Glimt
+7;IK Start;v;Molde
+7;Stabæk;v;Rosenborg
+7;Odd;v;Lillestrøm
+7;Sandefjord;v;Vålerenga
+7;Sogndal;v;FK Haugesund
+8;Sarpsborg 08;v;Strømsgodset
+8;Bodø Glimt;v;Brann
+8;Molde;v;Kristiansund BK
+8;Rosenborg;v;Tromsø
+8;Lillestrøm;v;IK Start
+8;Vålerenga;v;Stabæk
+8;FK Haugesund;v;Odd
+8;Sogndal;v;Sandefjord
+9;Strømsgodset;v;Bodø Glimt
+9;Sarpsborg 08;v;Molde
+9;Brann;v;Rosenborg
+9;Kristiansund BK;v;Lillestrøm
+9;Tromsø;v;Vålerenga
+9;IK Start;v;FK Haugesund
+9;Stabæk;v;Sogndal
+9;Odd;v;Sandefjord
+10;Molde;v;Strømsgodset
+10;Rosenborg;v;Bodø Glimt
+10;Lillestrøm;v;Sarpsborg 08
+10;Vålerenga;v;Brann
+10;FK Haugesund;v;Kristiansund BK
+10;Sogndal;v;Tromsø
+10;Sandefjord;v;IK Start
+10;Odd;v;Stabæk
+11;Strømsgodset;v;Rosenborg
+11;Molde;v;Lillestrøm
+11;Bodø Glimt;v;Vålerenga
+11;Sarpsborg 08;v;FK Haugesund
+11;Brann;v;Sogndal
+11;Kristiansund BK;v;Sandefjord
+11;Tromsø;v;Odd
+11;IK Start;v;Stabæk
+12;Lillestrøm;v;Strømsgodset
+12;Vålerenga;v;Rosenborg
+12;FK Haugesund;v;Molde
+12;Sogndal;v;Bodø Glimt
+12;Sandefjord;v;Sarpsborg 08
+12;Odd;v;Brann
+12;Stabæk;v;Kristiansund BK
+12;IK Start;v;Tromsø
+13;Strømsgodset;v;Vålerenga
+13;Lillestrøm;v;FK Haugesund
+13;Rosenborg;v;Sogndal
+13;Molde;v;Sandefjord
+13;Bodø Glimt;v;Odd
+13;Sarpsborg 08;v;Stabæk
+13;Brann;v;IK Start
+13;Kristiansund BK;v;Tromsø
+14;FK Haugesund;v;Strømsgodset
+14;Sogndal;v;Vålerenga
+14;Sandefjord;v;Lillestrøm
+14;Odd;v;Rosenborg
+14;Stabæk;v;Molde
+14;IK Start;v;Bodø Glimt
+14;Tromsø;v;Sarpsborg 08
+14;Kristiansund BK;v;Brann
+15;Strømsgodset;v;Sogndal
+15;FK Haugesund;v;Sandefjord
+15;Vålerenga;v;Odd
+15;Lillestrøm;v;Stabæk
+15;Rosenborg;v;IK Start
+15;Molde;v;Tromsø
+15;Bodø Glimt;v;Kristiansund BK
+15;Sarpsborg 08;v;Brann
+16;Sandefjord;v;Strømsgodset
+16;Odd;v;Sogndal
+16;Stabæk;v;FK Haugesund
+16;IK Start;v;Vålerenga
+16;Tromsø;v;Lillestrøm
+16;Kristiansund BK;v;Rosenborg
+16;Brann;v;Molde
+16;Sarpsborg 08;v;Bodø Glimt
+17;Strømsgodset;v;Odd
+17;Sandefjord;v;Stabæk
+17;Sogndal;v;IK Start
+17;FK Haugesund;v;Tromsø
+17;Vålerenga;v;Kristiansund BK
+17;Lillestrøm;v;Brann
+17;Rosenborg;v;Sarpsborg 08
+17;Molde;v;Bodø Glimt
+18;Stabæk;v;Strømsgodset
+18;IK Start;v;Odd
+18;Tromsø;v;Sandefjord
+18;Kristiansund BK;v;Sogndal
+18;Brann;v;FK Haugesund
+18;Sarpsborg 08;v;Vålerenga
+18;Bodø Glimt;v;Lillestrøm
+18;Molde;v;Rosenborg
+19;Strømsgodset;v;IK Start
+19;Stabæk;v;Tromsø
+19;Odd;v;Kristiansund BK
+19;Sandefjord;v;Brann
+19;Sogndal;v;Sarpsborg 08
+19;FK Haugesund;v;Bodø Glimt
+19;Vålerenga;v;Molde
+19;Lillestrøm;v;Rosenborg
+20;Tromsø;v;Strømsgodset
+20;Kristiansund BK;v;IK Start
+20;Brann;v;Stabæk
+20;Sarpsborg 08;v;Odd
+20;Bodø Glimt;v;Sandefjord
+20;Molde;v;Sogndal
+20;Rosenborg;v;FK Haugesund
+20;Lillestrøm;v;Vålerenga
+21;Strømsgodset;v;Kristiansund BK
+21;Tromsø;v;Brann
+21;IK Start;v;Sarpsborg 08
+21;Stabæk;v;Bodø Glimt
+21;Odd;v;Molde
+21;Sandefjord;v;Rosenborg
+21;Sogndal;v;Lillestrøm
+21;FK Haugesund;v;Vålerenga
+22;Brann;v;Strømsgodset
+22;Sarpsborg 08;v;Kristiansund BK
+22;Bodø Glimt;v;Tromsø
+22;Molde;v;IK Start
+22;Rosenborg;v;Stabæk
+22;Lillestrøm;v;Odd
+22;Vålerenga;v;Sandefjord
+22;FK Haugesund;v;Sogndal
+23;Strømsgodset;v;Sarpsborg 08
+23;Brann;v;Bodø Glimt
+23;Kristiansund BK;v;Molde
+23;Tromsø;v;Rosenborg
+23;IK Start;v;Lillestrøm
+23;Stabæk;v;Vålerenga
+23;Odd;v;FK Haugesund
+23;Sandefjord;v;Sogndal
+24;Bodø Glimt;v;Strømsgodset
+24;Molde;v;Sarpsborg 08
+24;Rosenborg;v;Brann
+24;Lillestrøm;v;Kristiansund BK
+24;Vålerenga;v;Tromsø
+24;FK Haugesund;v;IK Start
+24;Sogndal;v;Stabæk
+24;Sandefjord;v;Odd
+25;Strømsgodset;v;Molde
+25;Bodø Glimt;v;Rosenborg
+25;Sarpsborg 08;v;Lillestrøm
+25;Brann;v;Vålerenga
+25;Kristiansund BK;v;FK Haugesund
+25;Tromsø;v;Sogndal
+25;IK Start;v;Sandefjord
+25;Stabæk;v;Odd
+26;Rosenborg;v;Strømsgodset
+26;Lillestrøm;v;Molde
+26;Vålerenga;v;Bodø Glimt
+26;FK Haugesund;v;Sarpsborg 08
+26;Sogndal;v;Brann
+26;Sandefjord;v;Kristiansund BK
+26;Odd;v;Tromsø
+26;Stabæk;v;IK Start
+27;Strømsgodset;v;Lillestrøm
+27;Rosenborg;v;Vålerenga
+27;Molde;v;FK Haugesund
+27;Bodø Glimt;v;Sogndal
+27;Sarpsborg 08;v;Sandefjord
+27;Brann;v;Odd
+27;Kristiansund BK;v;Stabæk
+27;Tromsø;v;IK Start
+28;Vålerenga;v;Strømsgodset
+28;FK Haugesund;v;Lillestrøm
+28;Sogndal;v;Rosenborg
+28;Sandefjord;v;Molde
+28;Odd;v;Bodø Glimt
+28;Stabæk;v;Sarpsborg 08
+28;IK Start;v;Brann
+28;Tromsø;v;Kristiansund BK
+29;Strømsgodset;v;FK Haugesund
+29;Vålerenga;v;Sogndal
+29;Lillestrøm;v;Sandefjord
+29;Rosenborg;v;Odd
+29;Molde;v;Stabæk
+29;Bodø Glimt;v;IK Start
+29;Sarpsborg 08;v;Tromsø
+29;Brann;v;Kristiansund BK
+30;Sogndal;v;Strømsgodset
+30;Sandefjord;v;FK Haugesund
+30;Odd;v;Vålerenga
+30;Stabæk;v;Lillestrøm
+30;IK Start;v;Rosenborg
+30;Tromsø;v;Molde
+30;Kristiansund BK;v;Bodø Glimt
+30;Brann;v;Sarpsborg 08
