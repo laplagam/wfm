@@ -38,26 +38,32 @@ $match->loadTeams($chelsea,$newcastle);
 //Let's run the match. 
 $match->runMatch();
 
-echo $match->gameLogToJson();
-
-exit('end test');
+//exit('end test');
 
 //Let's create the main view. 
 $mainview = new vMainView();
 
 //Let's add the header to the site
-echo $mainview->makeHeaderView();
+$mainview->makeHeaderView();
+
 //Let's create the bootstrap top menu. 
-echo $mainview->createBootstrapTopMenu();
+$mainview->createBootstrapTopMenu();
+//getMatchViewLayout(MatchClass $match)
+//Apply json to mainview. 
+$mainview->addHtmlContent($matchview->loadMatchFromJson($match->gameLogToJson()));
+
+$mainview->addHtmlContent($matchview->getMatchViewLayout($match));
 
 //For testing, let's show the generated  fiztures and see how it looks. 
-$fixtures->generateFixtures(2);
+//$fixtures->generateFixtures(2);
 
 //Let's display the match result log. 
-echo $matchview->makeMatchTable($match);
+//echo $matchview->makeMatchTable($match);
 
 //$match->printResult();
 
 //Let's add the footer to the site
-echo $mainview->makeFooterView();
+$mainview->makeFooterView();
+
+echo $mainview->htmlout;
 ?>
