@@ -2,6 +2,7 @@
 
 class vMainView
 {
+  var $htmlout = '';
   function __construct()
   {
 
@@ -10,7 +11,7 @@ class vMainView
   function makeHeaderView()
   {
     //TODO: Make a proper header used for all pages with bootstrap and datatables. 
-    $htmlout = '
+    $this->htmlout .= '
     <!doctype HTML>
     <head>
     <title>WFM</title>
@@ -23,12 +24,12 @@ class vMainView
     <body>    
     ';
 
-    return $htmlout;
+    return $this->htmlout;
   }
 
   function createBootstrapTopMenu()
   {
-    $htmlout = '<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    $this->htmlout .= '<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <!--<a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -64,13 +65,13 @@ class vMainView
     </div>
   </nav>';
 
-    return $htmlout;
+    return $this->htmlout;
   }
 
   function makeFooterView()
   {
-    $htmlout = '<br/></body></html>';
-    return $htmlout;
+    $this->htmlout = '<br/></body></html>';
+    return $this->htmlout;
   }
 
 }

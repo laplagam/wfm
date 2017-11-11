@@ -13,10 +13,10 @@ $pdo = new PdoConnection();
 
 $fixtures = new mFixtureClass();
 
-$fixtures->makeFixtures($pdo);
-echo '<br/><br/>';
+//$fixtures->makeFixtures($pdo);
+//echo '<br/><br/>';
 //$fixtures->showFixtures();
-exit('Ending script here while testing fixture generation. ');
+//exit('Ending script here while testing fixture generation. ');
 
 
 $matchview = new vMatchView();
@@ -37,6 +37,10 @@ $match->loadTeams($chelsea,$newcastle);
 
 //Let's run the match. 
 $match->runMatch();
+
+echo $match->gameLogToJson();
+
+exit('end test');
 
 //Let's create the main view. 
 $mainview = new vMainView();

@@ -49,7 +49,12 @@ class MatchClass
 		{
 			return false;
 		}
-	}
+  }
+  
+  function gameLogToJson()
+  {
+    return json_encode($this->matchlog);
+  }
 
 	function makeGameLog($currentminute)
 	{
