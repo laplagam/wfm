@@ -23,11 +23,14 @@ class mFixtureClass
     $counter = 0;
 
     $dbh = $this->pdo->getPdoCon();
+    $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
     $query = 'INSERT INTO tblfixtures(leagueid,gameweek,hometeamid,hometeamname,awayteamid,awayteamname) 
       VALUES(:leagueid,:gameweek,:hometeamid,:hometeamname,:awayteamid,:awayteamname)';
 
     $stmt = $dbh->prepare($query);
+
+    
 
     $stmt->bindParam(':leagueid',$leagueid,PDO::PARAM_INT);
     $stmt->bindParam(':gameweek',$gameweek,PDO::PARAM_INT);
@@ -45,7 +48,7 @@ class mFixtureClass
     {
       $line_of_text = fgetcsv($fixtures, 10240,';');
       //var_dump($line_of_text);
-      $counter++;
+      
       $gameweek = $line_of_text[0];
       $hometeamname =$line_of_text[1];
       $awayteamname =$line_of_text[3];
@@ -55,7 +58,12 @@ class mFixtureClass
       {
         exit('done with csv testing. ');
       }*/
-      $stmt->execute();
+      if($counter!= 0)
+      {
+        $stmt->execute();
+      }
+      $counter++;
+      
     }
     //This functionality has limitation based on how many teams are added. 
     //First logic requires the amount of teams to be possible to subtract with 4.
