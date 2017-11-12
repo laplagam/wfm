@@ -11,8 +11,8 @@ require_once('views/matchview.php');
 
 $pdo = new PdoConnection();
 
-//$fixtures = new mFixtureClass();
-
+$fixtures = new mFixtureClass($pdo);
+$fixtures->makeFixtures('premierleaguefixtures.csv',2);
 //$fixtures->makeFixtures($pdo);
 //echo '<br/><br/>';
 //$fixtures->showFixtures();

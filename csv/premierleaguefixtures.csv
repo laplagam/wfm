@@ -1,0 +1,381 @@
+Weeknumber;Hometeam;vs;Awayteam
+1;Leicester;v;Watford
+1;Liverpool;v;Southampton
+1;Crystal Palace;v;West Bromwich
+1;Newcastle United;v;Brighton
+1;Everton;v;Burnley
+1;Bournemouth;v;Chelsea
+1;Arsenal;v;Swansea
+1;Stoke;v;West Ham
+1;Tottenham;v;Manchester United
+1;Huddersfield;v;Manchester City
+2;Southampton;v;Leicester
+2;West Bromwich;v;Watford
+2;Brighton;v;Liverpool
+2;Burnley;v;Crystal Palace
+2;Chelsea;v;Newcastle United
+2;Swansea;v;Everton
+2;West Ham;v;Bournemouth
+2;Manchester United;v;Arsenal
+2;Manchester City;v;Stoke
+2;Huddersfield;v;Tottenham
+3;Leicester;v;West Bromwich
+3;Southampton;v;Brighton
+3;Watford;v;Burnley
+3;Liverpool;v;Chelsea
+3;Crystal Palace;v;Swansea
+3;Newcastle United;v;West Ham
+3;Everton;v;Manchester United
+3;Bournemouth;v;Manchester City
+3;Arsenal;v;Huddersfield
+3;Stoke;v;Tottenham
+4;Brighton;v;Leicester
+4;Burnley;v;West Bromwich
+4;Chelsea;v;Southampton
+4;Swansea;v;Watford
+4;West Ham;v;Liverpool
+4;Manchester United;v;Crystal Palace
+4;Manchester City;v;Newcastle United
+4;Huddersfield;v;Everton
+4;Tottenham;v;Bournemouth
+4;Stoke;v;Arsenal
+5;Leicester;v;Burnley
+5;Brighton;v;Chelsea
+5;West Bromwich;v;Swansea
+5;Southampton;v;West Ham
+5;Watford;v;Manchester United
+5;Liverpool;v;Manchester City
+5;Crystal Palace;v;Huddersfield
+5;Newcastle United;v;Tottenham
+5;Everton;v;Stoke
+5;Bournemouth;v;Arsenal
+6;Chelsea;v;Leicester
+6;Swansea;v;Burnley
+6;West Ham;v;Brighton
+6;Manchester United;v;West Bromwich
+6;Manchester City;v;Southampton
+6;Huddersfield;v;Watford
+6;Tottenham;v;Liverpool
+6;Stoke;v;Crystal Palace
+6;Arsenal;v;Newcastle United
+6;Bournemouth;v;Everton
+7;Leicester;v;Swansea
+7;Chelsea;v;West Ham
+7;Burnley;v;Manchester United
+7;Brighton;v;Manchester City
+7;West Bromwich;v;Huddersfield
+7;Southampton;v;Tottenham
+7;Watford;v;Stoke
+7;Liverpool;v;Arsenal
+7;Crystal Palace;v;Bournemouth
+7;Newcastle United;v;Everton
+8;West Ham;v;Leicester
+8;Manchester United;v;Swansea
+8;Manchester City;v;Chelsea
+8;Huddersfield;v;Burnley
+8;Tottenham;v;Brighton
+8;Stoke;v;West Bromwich
+8;Arsenal;v;Southampton
+8;Bournemouth;v;Watford
+8;Everton;v;Liverpool
+8;Newcastle United;v;Crystal Palace
+9;Leicester;v;Manchester United
+9;West Ham;v;Manchester City
+9;Swansea;v;Huddersfield
+9;Chelsea;v;Tottenham
+9;Burnley;v;Stoke
+9;Brighton;v;Arsenal
+9;West Bromwich;v;Bournemouth
+9;Southampton;v;Everton
+9;Watford;v;Newcastle United
+9;Liverpool;v;Crystal Palace
+10;Manchester City;v;Leicester
+10;Huddersfield;v;Manchester United
+10;Tottenham;v;West Ham
+10;Stoke;v;Swansea
+10;Arsenal;v;Chelsea
+10;Bournemouth;v;Burnley
+10;Everton;v;Brighton
+10;Newcastle United;v;West Bromwich
+10;Crystal Palace;v;Southampton
+10;Liverpool;v;Watford
+11;Leicester;v;Huddersfield
+11;Manchester City;v;Tottenham
+11;Manchester United;v;Stoke
+11;West Ham;v;Arsenal
+11;Swansea;v;Bournemouth
+11;Chelsea;v;Everton
+11;Burnley;v;Newcastle United
+11;Brighton;v;Crystal Palace
+11;West Bromwich;v;Liverpool
+11;Southampton;v;Watford
+12;Tottenham;v;Leicester
+12;Stoke;v;Huddersfield
+12;Arsenal;v;Manchester City
+12;Bournemouth;v;Manchester United
+12;Everton;v;West Ham
+12;Newcastle United;v;Swansea
+12;Crystal Palace;v;Chelsea
+12;Liverpool;v;Burnley
+12;Watford;v;Brighton
+12;Southampton;v;West Bromwich
+13;Leicester;v;Stoke
+13;Tottenham;v;Arsenal
+13;Huddersfield;v;Bournemouth
+13;Manchester City;v;Everton
+13;Manchester United;v;Newcastle United
+13;West Ham;v;Crystal Palace
+13;Swansea;v;Liverpool
+13;Chelsea;v;Watford
+13;Burnley;v;Southampton
+13;Brighton;v;West Bromwich
+14;Arsenal;v;Leicester
+14;Bournemouth;v;Stoke
+14;Everton;v;Tottenham
+14;Newcastle United;v;Huddersfield
+14;Crystal Palace;v;Manchester City
+14;Liverpool;v;Manchester United
+14;Watford;v;West Ham
+14;Southampton;v;Swansea
+14;West Bromwich;v;Chelsea
+14;Brighton;v;Burnley
+15;Leicester;v;Bournemouth
+15;Arsenal;v;Everton
+15;Stoke;v;Newcastle United
+15;Tottenham;v;Crystal Palace
+15;Huddersfield;v;Liverpool
+15;Manchester City;v;Watford
+15;Manchester United;v;Southampton
+15;West Ham;v;West Bromwich
+15;Swansea;v;Brighton
+15;Chelsea;v;Burnley
+16;Everton;v;Leicester
+16;Newcastle United;v;Bournemouth
+16;Crystal Palace;v;Arsenal
+16;Liverpool;v;Stoke
+16;Watford;v;Tottenham
+16;Southampton;v;Huddersfield
+16;West Bromwich;v;Manchester City
+16;Brighton;v;Manchester United
+16;Burnley;v;West Ham
+16;Chelsea;v;Swansea
+17;Leicester;v;Newcastle United
+17;Everton;v;Crystal Palace
+17;Bournemouth;v;Liverpool
+17;Arsenal;v;Watford
+17;Stoke;v;Southampton
+17;Tottenham;v;West Bromwich
+17;Huddersfield;v;Brighton
+17;Manchester City;v;Burnley
+17;Manchester United;v;Chelsea
+17;West Ham;v;Swansea
+18;Crystal Palace;v;Leicester
+18;Liverpool;v;Newcastle United
+18;Watford;v;Everton
+18;Southampton;v;Bournemouth
+18;West Bromwich;v;Arsenal
+18;Brighton;v;Stoke
+18;Burnley;v;Tottenham
+18;Chelsea;v;Huddersfield
+18;Swansea;v;Manchester City
+18;West Ham;v;Manchester United
+19;Leicester;v;Liverpool
+19;Crystal Palace;v;Watford
+19;Newcastle United;v;Southampton
+19;Everton;v;West Bromwich
+19;Bournemouth;v;Brighton
+19;Arsenal;v;Burnley
+19;Stoke;v;Chelsea
+19;Tottenham;v;Swansea
+19;Huddersfield;v;West Ham
+19;Manchester City;v;Manchester United
+20;Watford;v;Leicester
+20;Southampton;v;Liverpool
+20;West Bromwich;v;Crystal Palace
+20;Brighton;v;Newcastle United
+20;Burnley;v;Everton
+20;Chelsea;v;Bournemouth
+20;Swansea;v;Arsenal
+20;West Ham;v;Stoke
+20;Manchester United;v;Tottenham
+20;Manchester City;v;Huddersfield
+21;Leicester;v;Southampton
+21;Watford;v;West Bromwich
+21;Liverpool;v;Brighton
+21;Crystal Palace;v;Burnley
+21;Newcastle United;v;Chelsea
+21;Everton;v;Swansea
+21;Bournemouth;v;West Ham
+21;Arsenal;v;Manchester United
+21;Stoke;v;Manchester City
+21;Tottenham;v;Huddersfield
+22;West Bromwich;v;Leicester
+22;Brighton;v;Southampton
+22;Burnley;v;Watford
+22;Chelsea;v;Liverpool
+22;Swansea;v;Crystal Palace
+22;West Ham;v;Newcastle United
+22;Manchester United;v;Everton
+22;Manchester City;v;Bournemouth
+22;Huddersfield;v;Arsenal
+22;Tottenham;v;Stoke
+23;Leicester;v;Brighton
+23;West Bromwich;v;Burnley
+23;Southampton;v;Chelsea
+23;Watford;v;Swansea
+23;Liverpool;v;West Ham
+23;Crystal Palace;v;Manchester United
+23;Newcastle United;v;Manchester City
+23;Everton;v;Huddersfield
+23;Bournemouth;v;Tottenham
+23;Arsenal;v;Stoke
+24;Burnley;v;Leicester
+24;Chelsea;v;Brighton
+24;Swansea;v;West Bromwich
+24;West Ham;v;Southampton
+24;Manchester United;v;Watford
+24;Manchester City;v;Liverpool
+24;Huddersfield;v;Crystal Palace
+24;Tottenham;v;Newcastle United
+24;Stoke;v;Everton
+24;Arsenal;v;Bournemouth
+25;Leicester;v;Chelsea
+25;Burnley;v;Swansea
+25;Brighton;v;West Ham
+25;West Bromwich;v;Manchester United
+25;Southampton;v;Manchester City
+25;Watford;v;Huddersfield
+25;Liverpool;v;Tottenham
+25;Crystal Palace;v;Stoke
+25;Newcastle United;v;Arsenal
+25;Everton;v;Bournemouth
+26;Swansea;v;Leicester
+26;West Ham;v;Chelsea
+26;Manchester United;v;Burnley
+26;Manchester City;v;Brighton
+26;Huddersfield;v;West Bromwich
+26;Tottenham;v;Southampton
+26;Stoke;v;Watford
+26;Arsenal;v;Liverpool
+26;Bournemouth;v;Crystal Palace
+26;Everton;v;Newcastle United
+27;Leicester;v;West Ham
+27;Swansea;v;Manchester United
+27;Chelsea;v;Manchester City
+27;Burnley;v;Huddersfield
+27;Brighton;v;Tottenham
+27;West Bromwich;v;Stoke
+27;Southampton;v;Arsenal
+27;Watford;v;Bournemouth
+27;Liverpool;v;Everton
+27;Crystal Palace;v;Newcastle United
+28;Manchester United;v;Leicester
+28;Manchester City;v;West Ham
+28;Huddersfield;v;Swansea
+28;Tottenham;v;Chelsea
+28;Stoke;v;Burnley
+28;Arsenal;v;Brighton
+28;Bournemouth;v;West Bromwich
+28;Everton;v;Southampton
+28;Newcastle United;v;Watford
+28;Crystal Palace;v;Liverpool
+29;Leicester;v;Manchester City
+29;Manchester United;v;Huddersfield
+29;West Ham;v;Tottenham
+29;Swansea;v;Stoke
+29;Chelsea;v;Arsenal
+29;Burnley;v;Bournemouth
+29;Brighton;v;Everton
+29;West Bromwich;v;Newcastle United
+29;Southampton;v;Crystal Palace
+29;Watford;v;Liverpool
+30;Huddersfield;v;Leicester
+30;Tottenham;v;Manchester City
+30;Stoke;v;Manchester United
+30;Arsenal;v;West Ham
+30;Bournemouth;v;Swansea
+30;Everton;v;Chelsea
+30;Newcastle United;v;Burnley
+30;Crystal Palace;v;Brighton
+30;Liverpool;v;West Bromwich
+30;Watford;v;Southampton
+31;Leicester;v;Tottenham
+31;Huddersfield;v;Stoke
+31;Manchester City;v;Arsenal
+31;Manchester United;v;Bournemouth
+31;West Ham;v;Everton
+31;Swansea;v;Newcastle United
+31;Chelsea;v;Crystal Palace
+31;Burnley;v;Liverpool
+31;Brighton;v;Watford
+31;West Bromwich;v;Southampton
+32;Stoke;v;Leicester
+32;Arsenal;v;Tottenham
+32;Bournemouth;v;Huddersfield
+32;Everton;v;Manchester City
+32;Newcastle United;v;Manchester United
+32;Crystal Palace;v;West Ham
+32;Liverpool;v;Swansea
+32;Watford;v;Chelsea
+32;Southampton;v;Burnley
+32;West Bromwich;v;Brighton
+33;Leicester;v;Arsenal
+33;Stoke;v;Bournemouth
+33;Tottenham;v;Everton
+33;Huddersfield;v;Newcastle United
+33;Manchester City;v;Crystal Palace
+33;Manchester United;v;Liverpool
+33;West Ham;v;Watford
+33;Swansea;v;Southampton
+33;Chelsea;v;West Bromwich
+33;Burnley;v;Brighton
+34;Bournemouth;v;Leicester
+34;Everton;v;Arsenal
+34;Newcastle United;v;Stoke
+34;Crystal Palace;v;Tottenham
+34;Liverpool;v;Huddersfield
+34;Watford;v;Manchester City
+34;Southampton;v;Manchester United
+34;West Bromwich;v;West Ham
+34;Brighton;v;Swansea
+34;Burnley;v;Chelsea
+35;Leicester;v;Everton
+35;Bournemouth;v;Newcastle United
+35;Arsenal;v;Crystal Palace
+35;Stoke;v;Liverpool
+35;Tottenham;v;Watford
+35;Huddersfield;v;Southampton
+35;Manchester City;v;West Bromwich
+35;Manchester United;v;Brighton
+35;West Ham;v;Burnley
+35;Swansea;v;Chelsea
+36;Newcastle United;v;Leicester
+36;Crystal Palace;v;Everton
+36;Liverpool;v;Bournemouth
+36;Watford;v;Arsenal
+36;Southampton;v;Stoke
+36;West Bromwich;v;Tottenham
+36;Brighton;v;Huddersfield
+36;Burnley;v;Manchester City
+36;Chelsea;v;Manchester United
+36;Swansea;v;West Ham
+37;Leicester;v;Crystal Palace
+37;Newcastle United;v;Liverpool
+37;Everton;v;Watford
+37;Bournemouth;v;Southampton
+37;Arsenal;v;West Bromwich
+37;Stoke;v;Brighton
+37;Tottenham;v;Burnley
+37;Huddersfield;v;Chelsea
+37;Manchester City;v;Swansea
+37;Manchester United;v;West Ham
+38;Liverpool;v;Leicester
+38;Watford;v;Crystal Palace
+38;Southampton;v;Newcastle United
+38;West Bromwich;v;Everton
+38;Brighton;v;Bournemouth
+38;Burnley;v;Arsenal
+38;Chelsea;v;Stoke
+38;Swansea;v;Tottenham
+38;West Ham;v;Huddersfield
+38;Manchester United;v;Manchester City

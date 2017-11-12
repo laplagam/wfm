@@ -2,26 +2,27 @@
 
 class mFixtureClass
 {
+  var $pdo;
   var $fixture;
   var $allteamsarray = array(1=>'IK Start',2=>'Rosenborg',3=>'Brann', 
     4=>'Molde', 5=>'Odd', 6=>'Bodø Glimt',7=>'Sogndal',8=>'Tromsø',
     9=>'Lillestrøm',10=>'Kristiansund BK',11=>'Sandefjord',12=>'Vålerenga',
     13=>'Stabæk',14=>'FK Haugesund',15=>'Strømsgodset',16=>'Sarpsborg 08');
 
-  function __construct()
+  function __construct(PdoConnection $pdo)
   {
-  
+    $this->pdo = $pdo;
   }
 
-  function makeFixtures(PdoConnection $pdo)
+  function makeFixtures($csvfilename='fixtures.csv',$leagueid=1)
   {
     //This functionality imports fixtures from CSV file and loads it into the database. 
 
-    $fixtures = fopen("csv/fixtures.csv", "r");
+    $fixtures = fopen("csv/".$csvfilename, "r");
 
     $counter = 0;
 
-    $dbh = $pdo->getPdoCon();
+    $dbh = $this->pdo->getPdoCon();
 
     $query = 'INSERT INTO tblfixtures(leagueid,gameweek,hometeamid,hometeamname,awayteamid,awayteamname) 
       VALUES(:leagueid,:gameweek,:hometeamid,:hometeamname,:awayteamid,:awayteamname)';
@@ -36,7 +37,7 @@ class mFixtureClass
     $stmt->bindParam(':awayteamname',$awayteamname,PDO::PARAM_STR);
     //$stmt->bindParam(':gameweek',$gameweek,PARAM::INT);
 
-    $leagueid = 1;
+    //$leagueid = 1;
     $awayteamid = 0;
     $hometeamid = 0;
 
