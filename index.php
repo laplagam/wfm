@@ -11,15 +11,12 @@ require_once('views/matchview.php');
 
 $pdo = new PdoConnection();
 
-$fixtures = new mFixtureClass();
+//$fixtures = new mFixtureClass();
 
 //$fixtures->makeFixtures($pdo);
 //echo '<br/><br/>';
 //$fixtures->showFixtures();
 //exit('Ending script here while testing fixture generation. ');
-
-
-$matchview = new vMatchView();
 
 //Let's create Chelsea
 $chelsea = new ClubClass();
@@ -32,35 +29,27 @@ $newcastle->makeTeam('Newcastle FC',180);
 //Let's create a match. 
 $match = new MatchClass();
 
+
 //Load Chelsea and Newcastle as opponents. 
 $match->loadTeams($chelsea,$newcastle);
 
 //Let's run the match. 
 $match->runMatch();
 
+$matchview = new vMatchView($match);
+
 //exit('end test');
 
 //Let's create the main view. 
 $mainview = new vMainView();
 
-//Let's add the header to the site
+//Setting up header and top menu. 
 $mainview->makeHeaderView();
-
-//Let's create the bootstrap top menu. 
 $mainview->createBootstrapTopMenu();
-//getMatchViewLayout(MatchClass $match)
-//Apply json to mainview. 
-$mainview->addHtmlContent($matchview->loadMatchFromJson($match->gameLogToJson()));
 
-$mainview->addHtmlContent($matchview->getMatchViewLayout($match));
-
-//For testing, let's show the generated  fiztures and see how it looks. 
-//$fixtures->generateFixtures(2);
-
-//Let's display the match result log. 
-//echo $matchview->makeMatchTable($match);
-
-//$match->printResult();
+//Add match to main view
+$mainview->addHtmlContent($matchview->getMatchViewLayout());
+$mainview->addHtmlContent($match->makeMatchJs());
 
 //Let's add the footer to the site
 $mainview->makeFooterView();

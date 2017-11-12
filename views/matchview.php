@@ -2,21 +2,22 @@
 
 class vMatchView
 {
-  function __construct()
+  var $match;
+  function __construct(MatchClass $match)
   {
-
+    $this->match = $match;
   }
 
-  function makeMatchTable(MatchClass $match)
+  function makeMatchTable()
   {
     //Let's make the table that displays the details.$_COOKIE
     $htmlout = '<br/><br/>
       <table id="table_id" class="display table table-hover table-border">		
       <thead>
       <tr style="background-color:black;color:white;">
-      <th>'.$match->hometeamobj->name.'</th>
+      <th>'.$this->match->hometeamobj->name.'</th>
       <th> - </th>
-      <th>'.$match->awayteamobj->name.'</th>
+      <th>'.$this->match->awayteamobj->name.'</th>
 
       <!--
       <th >White label</th>
@@ -32,7 +33,7 @@ class vMatchView
       <tbody>';
       $htmlout .= '<tr>';
 
-      foreach($match->matchlog as $key => $value)
+      foreach($this->match->matchlog as $key => $value)
       {
         if($value !=='')
         {
@@ -52,9 +53,9 @@ class vMatchView
       </tbody>
       <tfoot>        
         <tr style="background-color:#f1f1f1;font-weight:bold;">
-          <td>'.$match->hometeamgoals.'</td>
+          <td>'.$this->match->hometeamgoals.'</td>
           <td> - </td>
-          <td>'.$match->awayteamgoals.'</td>
+          <td>'.$this->match->awayteamgoals.'</td>
         </tr>
       </tfoot>
       </table>
@@ -63,7 +64,7 @@ class vMatchView
     return $htmlout;
   }
 
-  function getMatchViewLayout(MatchClass $match)
+  function getMatchViewLayout()
   {
     $htmlout = '<input type="button" onclick="viewMatch()" value="Show match"/><br/><br/>
     <br/><br/>
@@ -71,11 +72,11 @@ class vMatchView
     <table id="table_id" class="display table table-hover table-border">		
     <thead>
     <tr style="background-color:black;color:white;">
-      <th style="width:40%;">'.$match->hometeamobj->name.'</th>
+      <th style="width:40%;">'.$this->match->hometeamobj->name.'</th>
       <th style="width:5%;" id="hometeamgoals">0</th>
       <th style="width:10%;"> - </th>
       <th style="width:5%;" id="awayteamgoals">0</th>
-      <th style="width:40%;">'.$match->awayteamobj->name.'</th>
+      <th style="width:40%;">'.$this->match->awayteamobj->name.'</th>
     </tr>
     </thead>
     <tbody>
@@ -91,59 +92,7 @@ class vMatchView
      ';
      return $htmlout;
      ;
-  }
-
-  
-
-  function loadMatchFromJson($jsoncontent)
-  {
-    $htmlout = '<script type="text/javascript">
-    function viewMatch()
-    {
-      var matchjson = '.$jsoncontent.';
-      var counter = 0;
-      var hometeamgoals = 0;
-      var awayteamgoals = 0;
-      document.getElementById("hometeamgoals").innerHTML = 0;
-      document.getElementById("awayteamgoals").innerHTML = 0;
-      document.getElementById("hometeamlog").innerHTML = "";
-      document.getElementById("awayteamlog").innerHTML = "";
-      runMatch(matchjson,counter,hometeamgoals,awayteamgoals);      
-    }
-
-    function runMatch(element,counter,hometeamgoals,awayteamgoals)
-    {
-
-      counter++;
-      
-      if(typeof element[counter] !== "undefined")
-      {
-        if(typeof element[counter]["happening"] !== "undefined")
-        {
-          if(element[counter]["teamthatscored"] == "hometeam")
-          {
-            document.getElementById("hometeamlog").innerHTML += element[counter]["happening"]+"<br/>";
-            hometeamgoals++;
-            document.getElementById("hometeamgoals").innerHTML = hometeamgoals.toString();
-          }
-          else
-          {
-            document.getElementById("awayteamlog").innerHTML += element[counter]["happening"]+"<br/>";
-            awayteamgoals++;
-            document.getElementById("awayteamgoals").innerHTML = awayteamgoals.toString();
-          }
-        }
-        document.getElementById("matchtimer").innerHTML = counter.toString();
-      setTimeout(function() {
-        runMatch(element,counter,hometeamgoals,awayteamgoals);
-        }, 200);
-      }
-      
-    }
-
-    </script>';
-    return $htmlout;
-  }
+  } 
 }
 
 ?>
