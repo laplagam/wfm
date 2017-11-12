@@ -59,6 +59,27 @@ INSERT INTO `tblclub` (`id`, `name`, `skill`, `countryid`, `leaguelevel`, `leagu
 (15, 'Molde', 540, 1, 1, 1),
 (16, 'Rosenborg', 620, 1, 1, 1);
 
+INSERT INTO `tblclub` ( `name`, `skill`, `countryid`, `leaguelevel`, `leagueid`) VALUES
+('Manchester City', 780, 2, 1, 2),
+('Chelsea ', 760, 2, 1, 2),
+('Manchester United', 740, 2, 1, 2),
+('Tottenham', 720, 2, 1, 2),
+('Liverpool', 680, 2, 1, 2),
+('Arsenal', 680, 2, 1, 2),
+('Burnley', 640, 2, 1, 2),
+('Brighton', 600, 2, 1, 2),
+('Watford', 640, 2, 1, 2),
+('Huddersfield', 600, 2, 1, 2),
+('Newcastle United', 610, 2, 1, 2),
+('Leicester', 615, 2, 1, 2),
+('Southampton', 660, 2, 1, 2),
+('Stoke', 640, 2, 1, 2),
+('Everton', 650, 2, 1, 2),
+('West Bromwich', 610, 2, 1, 2),
+('Bournemouth', 615, 2, 1, 2),
+('West Ham', 640, 2, 1, 2),
+('Swansea', 600, 2, 1, 2),
+('Crystal Palace', 595, 2, 1, 2);
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
