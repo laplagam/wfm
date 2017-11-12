@@ -14,6 +14,13 @@ class mFixtureClass
     $this->pdo = $pdo;
   }
 
+  function updateFixtureTeamIdFromName()
+  {
+    //TODO: Make the queries run to update the database. 
+    $query = 'update tblfixtures f inner join tblclub c on f.hometeamname = c.name set f.hometeamid = c.id ';
+    $query = 'update tblfixtures f inner join tblclub c on f.awayteamname = c.name set f.awayteamid = c.id ';
+  }
+
   function makeFixtures($csvfilename='fixtures.csv',$leagueid=1)
   {
     //This functionality imports fixtures from CSV file and loads it into the database. 

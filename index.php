@@ -19,26 +19,27 @@ $pdo = new PdoConnection();
 //exit('Ending script here while testing fixture generation. ');
 
 //Let's create Chelsea
-$chelsea = new ClubClass();
-$chelsea->makeTeam('Chelsea FC',200);
+//$chelsea = new ClubClass($pdo);
+//$chelsea->getTeamFromId(54);
+
+//$chelsea->makeTeam('Chelsea FC',200);
 
 //Let's create Newcastle
-$newcastle = new ClubClass();
-$newcastle->makeTeam('Newcastle FC',180);
+//$liverpool = new ClubClass($pdo);
+//$liverpool->getTeamFromId(57);
+//$newcastle->makeTeam('Newcastle FC',180);
 
 //Let's create a match. 
-$match = new MatchClass();
-
+$match = new MatchClass($pdo,new ClubClass($pdo));
 
 //Load Chelsea and Newcastle as opponents. 
-$match->loadTeams($chelsea,$newcastle);
+//$match->loadTeams($chelsea,$liverpool);
+$match->loadMatchFromId(309);
 
 //Let's run the match. 
 $match->runMatch();
 
 $matchview = new vMatchView($match);
-
-//exit('end test');
 
 //Let's create the main view. 
 $mainview = new vMainView();

@@ -4,6 +4,9 @@
 
 class MatchClass
 {
+  var $pdo;
+  var $clubclass;
+
 	var $hometeamobj;
 	var $awayteamobj;
 
@@ -20,7 +23,45 @@ class MatchClass
 	/*function __construct()
 	{
 
-	}*/
+  }*/
+
+  function __construct(PdoConnection $pdo, ClubClass $clubclass)
+  {
+    $this->pdo = $pdo;
+    $this->clubclass = $clubclass;
+  }
+  
+  function loadMatchFromId($matchid)
+  {
+    $dbh = $this->pdo->getPdoCon();
+    $query = 'SELECT hometeamid,awayteamid FROM tblfixtures WHERE id = :id';
+    $stmt = $dbh->prepare($query);
+
+    $stmt->bindParam(':id',$matchid,PDO::PARAM_INT);
+
+    $stmt->execute();
+
+    $result = $stmt->fetch();
+
+    //echo '<br/>'.$result['hometeamid'].'<br/>';
+    //echo '<br/>'.$result['awayteamid'].'<br/>';
+    
+    //Load home team
+    //$this->clubclass->getTeamFromId($result['hometeamid']);
+    $this->hometeamobj = clone $this->clubclass;
+    $this->hometeamobj->getTeamFromId($result['hometeamid']);
+
+    //echo $this->hometeamobj->name;
+    
+    //Load away team
+    $this->awayteamobj = clone $this->clubclass;    
+    $this->awayteamobj->getTeamFromId($result['awayteamid']);
+
+    //echo $this->hometeamobj->name;
+    //echo $this->awayteamobj->name;
+    //$this->hometeamobj = $hometeamobj;
+		//$this->awayteamobj = $awayteamobj;
+  }
 
 	function loadTeams(ClubClass $hometeamobj, ClubClass $awayteamobj)
 	{
@@ -43,7 +84,7 @@ class MatchClass
 
 	function checkIfGoalScored($skill)
 	{
-		$goalfactor = 6000;
+		$goalfactor = 30000;
 
 		if($skill>mt_rand(0,$goalfactor))
 		{
