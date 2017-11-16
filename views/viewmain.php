@@ -48,6 +48,14 @@ class vMainView
           <a class="nav-link" href="index.php">Run match <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Game
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="index.php?page=creategame">Create a new game</a>            
+        </div>
+      </li>
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Table
           </a>
