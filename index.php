@@ -2,12 +2,15 @@
 
 ini_set('display_errors','1');
 //header('Content-Type: text/html; charset=UTF-8');
+
 require_once('models/matchclass.php');
 require_once('models/clubclass.php');
 require_once('models/fixtureclass.php');
+require_once('models/gameclass.php');
 require_once('models/sqlconnclass.php');
-require_once('views/viewmain.php');
+require_once('views/mainview.php');
 require_once('views/matchview.php');
+require_once('views/gameview.php');
 
 $pdo = new PdoConnection();
 
@@ -29,6 +32,24 @@ $pdo = new PdoConnection();
 //$liverpool->getTeamFromId(57);
 //$newcastle->makeTeam('Newcastle FC',180);
 
+//Let's create the main view. 
+$mainview = new vMainView();
+//Setting up header and top menu. 
+$mainview->makeHeaderView();
+$mainview->createBootstrapTopMenu();
+
+//Don't mix game with match. Game clease is to create/load or delete a user created game. 
+if(!empty($_GET['page']) &&  $_GET['page'] == 'creategame')
+{
+  $game =  new GameClass($pdo);
+  $gameview = new vGameView($game);
+  $mainview->addHtmlContent($gameview->CreateGameView());
+  $mainview->makeFooterView();  
+  echo $mainview->htmlout;
+  //echo 'test';
+  exit();
+}
+
 //Let's create a match. 
 $match = new MatchClass($pdo,new ClubClass($pdo));
 
@@ -40,13 +61,6 @@ $match->loadMatchFromId(309);
 $match->runMatch();
 
 $matchview = new vMatchView($match);
-
-//Let's create the main view. 
-$mainview = new vMainView();
-
-//Setting up header and top menu. 
-$mainview->makeHeaderView();
-$mainview->createBootstrapTopMenu();
 
 //Add match to main view
 $mainview->addHtmlContent($matchview->getMatchViewLayout());
