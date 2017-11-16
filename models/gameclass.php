@@ -11,6 +11,20 @@ class GameClass
     $this->pdo = $pdo;
   }
 
+  function createGameJavascriptCode()
+  {
+    $htmlout = '
+    <script type="text/javascript">
+    function submitGameForm()
+    {
+      document.getElementById("createthegame").value = 1;
+      document.getElementById("submitGameForm").submit();
+    }
+    </script>
+    ';
+    return $htmlout;
+  }
+
   function createGame($userid,$leagueid,$clubid,$gamename)
   {
     $dbh = $this->pdo;
@@ -32,6 +46,8 @@ class GameClass
       $this->errorcount++;
       echo 'Failed to create a new game. ';
     }
+
+
     
   }
   function loadGame($gameid)
