@@ -35,20 +35,29 @@ $pdo = new PdoConnection();
 //Let's create the main view. 
 $mainview = new vMainView();
 //Setting up header and top menu. 
-$mainview->makeHeaderView();
-$mainview->createBootstrapTopMenu();
+
+
 
 //Don't mix game with match. Game clease is to create/load or delete a user created game. 
 if(!empty($_GET['page']) &&  $_GET['page'] == 'creategame')
 {
+  
   $game =  new GameClass($pdo);
   $gameview = new vGameView($game);
+  
+  $mainview->applyToHeader($game->createGameJavascriptCode());  
+  $mainview->makeHeaderView();
+  $mainview->createBootstrapTopMenu();
   $mainview->addHtmlContent($gameview->CreateGameView());
+
   $mainview->makeFooterView();  
   echo $mainview->htmlout;
   //echo 'test';
   exit();
 }
+
+$mainview->makeHeaderView();
+$mainview->createBootstrapTopMenu();
 
 //Let's create a match. 
 $match = new MatchClass($pdo,new ClubClass($pdo));
