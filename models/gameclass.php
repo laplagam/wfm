@@ -111,15 +111,16 @@ class GameClass
     }
     //User savegame stored. 
 
-    //Let's load all football clubs to save game
+    // Let's load all football clubs to the save game
     $query = 'INSERT INTO tbluserclub(id,`name`,skill,countryid,leaguelevel,leagueid,isplayer,userid,gameid) 
-      SELECT id,`name`,skill,countryid,leaguelevel,leagueid,isplayer,:userid,:gameid FROM tblclub ';
+      SELECT id,`name`,skill,countryid,leaguelevel,leagueid,isplayer,:userid,:gameid FROM tblclub WHERE leagueid = :leagueid ';
 
     $stmt = $dbh->prepare($query);
     $stmt->bindParam(':userid',$this->userid,PDO::PARAM_INT);
     $stmt->bindParam(':gameid',$this->gameid,PDO::PARAM_INT);
+    $stmt->bindParam(':leagueid',$this->leagueid,PDO::PARAM_INT);
 
-    //try/catch nightmare code to verify whether the insert was successful. 
+    // try/catch nightmare code to verify whether the insert was successful. 
     try
     {
       $result = $stmt->execute();
@@ -142,6 +143,40 @@ class GameClass
       return 0;
     }
     //Clubs in selected league added to the savegame. 
+
+    // Loading fixtures to savegame. 
+
+    $query = 'INSERT INTO tbluserfixtures(id,leagueid,gameweek, hometeamid, hometeamname,awayteamid,awayteamname,matchlogjson,hometeamgoals,awayteamgoals,isplayed,userid,gameid) 
+    SELECT id,leagueid,gameweek, hometeamid, hometeamname,awayteamid,awayteamname,null,hometeamgoals,awayteamgoals,isplayed,:userid,:gameid FROM tblfixtures WHERE leagueid = :leagueid';
+
+    $stmt = $dbh->prepare($query);
+
+    $stmt->bindParam(':userid',$this->userid,PDO::PARAM_INT);
+    $stmt->bindParam(':gameid',$this->gameid,PDO::PARAM_INT);
+    $stmt->bindParam(':leagueid',$this->leagueid,PDO::PARAM_INT);
+
+    // try/catch nightmare code to verify whether the insert was successful. 
+    try
+    {
+      $result = $stmt->execute();
+
+      if($result == false)
+      {
+        $errorarray = $stmt->errorInfo();
+        $this->errormessage .= $errorarray[0].' - '.$errorarray[1].' - '.$errorarray[2].'<br/>';
+        $this->errorcount++;
+        return 0;
+      }
+      
+    }
+    catch(Exception $e)
+    {
+      
+      $this->errormessage .= $e->getMessage();
+      $this->errorcount++;
+      //echo 'Failed to create a new game. ';
+      return 0;
+    }
     
   }
   function loadGame($gameid)
