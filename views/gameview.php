@@ -2,40 +2,39 @@
 
 class vGameView
 {
-  var $game;
-  var $leagueid=0;  
-  var $clubid=0;
-  var $gamename='';
+  var $game;  
   var $errormessage;
   function __construct(GameClass $game)
   {
-    $this->game = $game;
-
-    if(isset($_POST['leagueid']) && is_numeric($_POST['leagueid']))
-    {
-      $this->leagueid = $_POST['leagueid'];
-    }
-    if(isset($_POST['clubid']) && is_numeric($_POST['clubid']))
-    {
-      $this->clubid = $_POST['clubid'];
-    }
-    if(isset($_POST['gamename']))
-    {
-      $this->gamename = $_POST['gamename'];
-    } 
+    $this->game = $game;    
   }
 
   function gameHasBeenCreated()
   {
-    $htmlout = 'Game was successfully created';
+    $htmlout ='';
+    if($this->game->errorcount > 0)
+    {
+      $htmlout .= $this->game->errormessage;
+      $htmlout .= 'Number of errors: '.$this->game->errorcount.'<br/>';      
+    }
+    else
+    {
+      $htmlout .= 'Game was successfully created. <input type="button" class="btn-primary" value="Go to game"/> ';
+    }
+    
+    return $htmlout;
   }
 
   //TODO: Make selection boxes loaded from database. Make functionality in Model class. 
   //Make userid run based on logged in user. 
   function createGameView()
   {
+    if(isset($_POST['createthegame']) && $_POST['createthegame'] == 1)
+    {
+      return $this->gameHasBeenCreated();
+    }
     //Let's make the table that displays the details.$_COOKIE
-    $htmlout = '<br/><br/><form action="index.php?page=creategame">
+    $htmlout = '<br/><br/><form method="POST" name="submitGameForm" id="submitGameForm" action="index.php?page=creategame">
     <div class="table-responsive">
       <table id="table_id" class="display table table-hover table-bordered table-striped">		
       <thead>
@@ -48,13 +47,13 @@ class vGameView
       <tbody>
       <tr>
         <td>
-          <input type="hidden" name="userid" id="userid" value="1"/>
+          <input type="hidden" name="userid" id="userid" value="'.$this->game->userid.'"/>
           <input type="hidden" name="createthegame" id="createthegame" value="0"/>
-          <input type="text" id="leagueid" name="leagueid" value="2"/>           
+          <input type="text" id="leagueid" name="leagueid" value="'.$this->game->leagueid.'"/>           
         </td>
-        <td><input type="text" id="clubid" name="clubid" value="54"/></td>
-        <td><input type="text" id="gamename" name="gamename" value="Lars Chelsea"/></td>
-        <td><input type="button" class="btn-primary" value="Create game"/></td>
+        <td><input type="text" id="clubid" name="clubid" value="'.$this->game->clubid.'"/></td>
+        <td><input type="text" id="gamename" name="gamename" value="'.$this->game->gamename.'"/></td>
+        <td><input type="button" class="btn-primary" onClick="submitForm()" value="Create game"/></td>
       </tr>      
       </tbody>     
       </table>
