@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2017 at 03:30 AM
+-- Generation Time: Nov 16, 2017 at 10:26 PM
 -- Server version: 5.7.9
--- PHP Version: 5.6.16
+-- PHP Version: 7.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `tbltable` (
   `draw` int(11) NOT NULL DEFAULT '0',
   `loss` int(11) NOT NULL DEFAULT '0',
   `points` int(11) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tbltable`
@@ -59,7 +59,27 @@ INSERT INTO `tbltable` (`leagueid`, `teamid`, `teamname`, `goalsfor`, `goalsagai
 (1, 13, 'Strømsgodset', 0, 0, 0, 0, 0, 0),
 (1, 14, 'Sarpsborg 08', 0, 0, 0, 0, 0, 0),
 (1, 15, 'Molde', 0, 0, 0, 0, 0, 0),
-(1, 16, 'Rosenborg', 0, 0, 0, 0, 0, 0);
+(1, 16, 'Rosenborg', 0, 0, 0, 0, 0, 0),
+(2, 53, 'Manchester City', 0, 0, 0, 0, 0, 0),
+(2, 54, 'Chelsea ', 0, 0, 0, 0, 0, 0),
+(2, 55, 'Manchester United', 0, 0, 0, 0, 0, 0),
+(2, 56, 'Tottenham', 0, 0, 0, 0, 0, 0),
+(2, 57, 'Liverpool', 0, 0, 0, 0, 0, 0),
+(2, 58, 'Arsenal', 0, 0, 0, 0, 0, 0),
+(2, 59, 'Burnley', 0, 0, 0, 0, 0, 0),
+(2, 60, 'Brighton', 0, 0, 0, 0, 0, 0),
+(2, 61, 'Watford', 0, 0, 0, 0, 0, 0),
+(2, 62, 'Huddersfield', 0, 0, 0, 0, 0, 0),
+(2, 63, 'Newcastle United', 0, 0, 0, 0, 0, 0),
+(2, 64, 'Leicester', 0, 0, 0, 0, 0, 0),
+(2, 65, 'Southampton', 0, 0, 0, 0, 0, 0),
+(2, 66, 'Stoke', 0, 0, 0, 0, 0, 0),
+(2, 67, 'Everton', 0, 0, 0, 0, 0, 0),
+(2, 68, 'West Bromwich', 0, 0, 0, 0, 0, 0),
+(2, 69, 'Bournemouth', 0, 0, 0, 0, 0, 0),
+(2, 70, 'West Ham', 0, 0, 0, 0, 0, 0),
+(2, 71, 'Swansea', 0, 0, 0, 0, 0, 0),
+(2, 72, 'Crystal Palace', 0, 0, 0, 0, 0, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
