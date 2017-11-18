@@ -69,7 +69,7 @@ class vMainView
             Table
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">View current standings</a>            
+            <a class="dropdown-item" href="index.php?page=table">View current standings</a>            
           </div>
         </li>
         <li class="nav-item dropdown">
