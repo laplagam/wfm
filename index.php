@@ -5,7 +5,7 @@ ini_set('display_errors','1');
 
 
 require_once('models/clubclass.php');
-require_once('models/fixtureclass.php');
+//require_once('models/fixtureclass.php');
 require_once('models/sqlconnclass.php');
 require_once('views/mainview.php');
 
@@ -75,8 +75,36 @@ else if(!empty($_GET['page']) &&  $_GET['page'] == 'table')
   //$mainview->addHtmlContent($matchview->getMatchViewLayout());
   //$mainview->addHtmlContent($match->makeMatchJs());
   //Let's add the footer to the site
+ 
+}
+else if(!empty($_GET['page']) &&  $_GET['page'] == 'mainview')
+{
+  require_once('models/gamefixtureclass.php');
+  require_once('views/gamefixtureview.php');
+
+  $mainview->makeHeaderView();
+  $mainview->createBootstrapTopMenu();
+  $gamefixture = new GameFixtureClass($pdo);
+  $gamefixture->upcommingMatches(6,1);
+
+  $vGameFixture = new vGameFixture($gamefixture);
+  $mainview->addHtmlContent($vGameFixture->showFixtures());//Add gameid parameter when going live. 
+
+  
+
+  //$match = new MatchClass($pdo,new ClubClass($pdo));
+  //Let's create a match. 
+  //$match->loadMatchFromId(309);
+  //Let's run the match. 
+  //$match->runMatch();
+  //$matchview = new vMatchView($match);
+  //Add match to main view
+  //$mainview->addHtmlContent($matchview->getMatchViewLayout());
+  //$mainview->addHtmlContent($match->makeMatchJs());
+  //Let's add the footer to the site
   
 }
+
 
 
 $mainview->makeFooterView();
