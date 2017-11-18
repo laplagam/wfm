@@ -9,6 +9,7 @@ require_once('models/fixtureclass.php');
 require_once('models/sqlconnclass.php');
 require_once('views/mainview.php');
 
+
 $pdo = new PdoConnection();
 //Let's create the main view. 
 $mainview = new vMainView();
@@ -53,11 +54,17 @@ else if(!empty($_GET['page']) &&  $_GET['page'] == 'playmatch')
 }
 else if(!empty($_GET['page']) &&  $_GET['page'] == 'table')
 {
-  require_once('models/matchclass.php');
-  require_once('views/matchview.php');
+  require_once('models/tableclass.php');
+  require_once('views/tableview.php');
 
   $mainview->makeHeaderView();
   $mainview->createBootstrapTopMenu();
+  $table = new TableClass($pdo);
+  $table->getTableData();//Add gameid parameter when going live. 
+
+  $tableview = new vTableView($table);
+  $mainview->addHtmlContent($tableview->showTable());//Add gameid parameter when going live. 
+
   //$match = new MatchClass($pdo,new ClubClass($pdo));
   //Let's create a match. 
   //$match->loadMatchFromId(309);
