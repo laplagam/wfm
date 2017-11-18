@@ -17,8 +17,8 @@ class mFixtureClass
   function updateFixtureTeamIdFromName()
   {
     //TODO: Make the queries run to update the database. 
-    $query = 'update tblfixtures f inner join tblclub c on f.hometeamname = c.name set f.hometeamid = c.id ';
-    $query = 'update tblfixtures f inner join tblclub c on f.awayteamname = c.name set f.awayteamid = c.id ';
+    $query = 'UPDATE tblfixtures f INNER JOIN tblclub c ON f.hometeamname = c.name SET f.hometeamid = c.id ';
+    $query = 'UPDATE tblfixtures f INNER JOIN tblclub c ON f.awayteamname = c.name SET f.awayteamid = c.id ';
   }
 
   function makeFixtures($csvfilename='fixtures.csv',$leagueid=1)
@@ -30,7 +30,7 @@ class mFixtureClass
     $counter = 0;
 
     $dbh = $this->pdo->getPdoCon();
-    $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    //$dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
     $query = 'INSERT INTO tblfixtures(leagueid,gameweek,hometeamid,hometeamname,awayteamid,awayteamname) 
       VALUES(:leagueid,:gameweek,:hometeamid,:hometeamname,:awayteamid,:awayteamname)';
@@ -117,70 +117,11 @@ class mFixtureClass
 
   }
 
-  /*//Check if we have odd numers of teams. We simply don't allow it. Sorry :) 
-    if($numberofteams % 2 == 1) 
-    {
-      exit('Odd number of teams not supported. ');
-    }*/
-
   //Function used to see progress of the fixture generation. Test function. 
   function showFixtures()
   {
     var_dump($this->fixture);
   }
-
-    //Making algorithm 
- 
-  /*
-  function getWeek($home, $away, $num_teams=4) 
-  { 
-    if($home == $away){
-        return -1;
-    }
-    $week = $home+$away-2;
-    if($week >= $num_teams){
-        $week = $week-$num_teams+1;
-    }
-    if($home>$away){
-        $week += $num_teams-1;
-    }
-    return $week;
-  }
-
-  function generateFixtures($numberofteams=4)
-  {
-    $teams = $numberofteams;
-    $games = array();   //2D array tracking which week teams will be playing
-    
-    // do the work
-    for( $i=1; $i<=$teams; $i++ ) {
-        $games[$i] = array();
-        for( $j=1; $j<=$teams; $j++ ) {
-            $games[$i][$j] = $this->getweek($i, $j, $teams);
-        }
-    }
-    $this->displayFixtures($games,$numberofteams);
-  }
-
-  function displayFixtures($games,$teams)
-  {
-    // display
-    echo '<pre>';
-    $max=0;
-    foreach($games as $row) {
-        foreach($row as $col) {
-            printf('%4d', is_null($col) ? -2 : $col);
-            if( $col > $max ) { $max=$col; }
-        }
-        echo "\n";
-    }
-    printf("%d teams in %d weeks, %.2f weeks per team\n", $teams, $max, $max/$teams);
-    echo '</pre>';
-  }
-*/
-    
-  
-  
 }
 
 ?>
