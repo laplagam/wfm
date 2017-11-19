@@ -15,7 +15,7 @@ class GameFixtureClass
     $dbh = $this->pdo->getPdoCon();
     $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
-    $query = 'SELECT leagueid,gameweek,hometeamid,hometeamname,awayteamid,awayteamname FROM tbluserfixtures 
+    $query = 'SELECT id, leagueid, gameweek, hometeamid, hometeamname, awayteamid, awayteamname, gameid FROM tbluserfixtures 
       WHERE gameid = :gameid and gameweek = :gameweek
       ';
 
