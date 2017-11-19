@@ -59,7 +59,7 @@ class vMainView
       <a class="nav-link" href="index.php?page=mainview">Main page <span class="sr-only">(current)</span></a>
     </li>
       <li class="nav-item active">
-      <a class="nav-link" href="index.php">Run match <span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="index.php?page=playmatch">Run match <span class="sr-only">(current)</span></a>
     </li>
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

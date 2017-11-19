@@ -8,8 +8,10 @@ class GameClass
   var $leagueid=0;  
   var $clubid=0;
   var $gamename='';
-  var $userid='';
+  var $userid=0;
   var $gameid = 0;
+  var $season= 0;
+  var $gameweek = 0;
   
   
   var $errormessage='';
@@ -51,6 +53,14 @@ class GameClass
     {
       $this->userid = 1;
     }
+    if(isset($_POST['gameid'])  && is_numeric($_POST['gameid']))
+    {
+      $this->gameid = $_POST['gameid'];
+    }
+    else
+    {
+      $this->gameid = 9;
+    }
 
     //Check if we need to save the game. 
     if(isset($_POST['createthegame']) && $_POST['createthegame'] == 1)
@@ -58,6 +68,70 @@ class GameClass
       $this->createGame();
     }
 
+  }
+
+  function saveGame()
+  {
+    $this->gameweek++;
+
+    $dbh = $this->pdo->getPdoCon();
+    $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    //TODO: Fix when moving on to next season. 
+    $query = 'UPDATE tblusergame SET season = :season, gameweek = :gameweek WHERE id = :id
+      ';
+
+    $stmt = $dbh->prepare($query);  
+
+    $stmt->bindParam(':id',$this->gameid,PDO::PARAM_INT);
+    $stmt->bindParam(':gameweek',$this->gameweek,PDO::PARAM_INT);
+    $stmt->bindParam(':season',$this->season,PDO::PARAM_INT);
+
+    $stmt->execute();
+  }
+
+  function loadGame()
+  {
+    
+    $dbh = $this->pdo->getPdoCon();
+    //$dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    $query = 'SELECT id,userid, leagueid, clubid, gamename, season, gameweek FROM tblusergame where id = :id';
+    $stmt = $dbh->prepare($query);
+
+    $stmt->bindParam(':id',$this->gameid,PDO::PARAM_INT);
+
+    try
+    {
+      $result = $stmt->execute();
+
+      if($result == false)
+      {
+        $errorarray = $stmt->errorInfo();
+        $this->errormessage .= $errorarray[0].' - '.$errorarray[1].' - '.$errorarray[2].'<br/>';
+        $this->errorcount++;
+        return 0;
+      }
+      else
+      {
+        $row = $stmt->fetch();
+
+        //$this->gameid = $gameid;
+        $this->clubid = $row['clubid'];
+        $this->leagueid = $row['leagueid'];
+        $this->gamename = $row['gamename'];
+        $this->userid = $row['userid'];
+        $this->gameweek = $row['gameweek'];
+        $this->season = $row['season'];       
+        
+      }
+    }
+    catch(Exception $e)
+    {
+      
+      $this->errormessage .= $e->getMessage();
+      $this->errorcount++;
+      //echo 'Failed to create a new game. ';
+      return 0;
+    }
   }
 
   function createGameJavascriptCode()
@@ -215,10 +289,6 @@ class GameClass
     }
     //Completed all inserts. 
     //Eh, will make stored procedure for this later. Maybe. Silly to do all this in PHP.
-    
-  }
-  function loadGame($gameid)
-  {
     
   }
 }

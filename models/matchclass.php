@@ -12,7 +12,18 @@ class MatchClass
 
 	var $currentminute = 0;
 	var $hometeamgoals = 0;
-	var $awayteamgoals = 0;
+  var $awayteamgoals = 0;
+  
+  var $awayteampoints = 0;
+  var $awayteamvictory = 0;
+  var $awayteamdraw = 0;
+  var $awayteamloss = 0;
+  
+  var $hometeampoints = 0;
+  var $hometeamvictory = 0;
+  var $hometeamdraw = 0;
+  var $hometeamloss = 0;
+  
   var $matchlength = 95;
   var $matchid = 0;
 
@@ -68,15 +79,57 @@ class MatchClass
 		//$this->awayteamobj = $awayteamobj;
   }
 
-  function updateMatchToDb()
+  function updateMatchToDb($gameid)
   {
     $dbh = $this->pdo->getPdoCon();
     $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-    $query = 'UPDATE tbluserfixtures SET hometeamgoals = :hometeamgoals, awayteamgoals = :awayteamgoals, isplayed=1, matchlogjson=:matchlogjson  WHERE id = :id';
+    $query = 'UPDATE tbluserfixtures SET hometeamgoals = :hometeamgoals, awayteamgoals = :awayteamgoals, isplayed=1, 
+    matchlogjson=:matchlogjson, hometeampoints = :hometeampoints , awayteampoints = :awayteampoints WHERE id = :id';
     $stmt = $dbh->prepare($query);
 
     $stmt->bindParam(':hometeamgoals',$this->hometeamgoals,PDO::PARAM_INT);
     $stmt->bindParam(':awayteamgoals',$this->awayteamgoals,PDO::PARAM_INT);
+
+    if($this->hometeamgoals > $this->awayteamgoals)
+    {
+      $this->hometeampoints = 3;
+      $this->hometeamvictory = 1;
+      $this->hometeamdraw = 0;
+      $this->hometeamloss = 0;
+
+      $this->awayteampoints = 0;
+      $this->awayteamvictory = 0;
+      $this->awayteamdraw = 0;
+      $this->awayteamloss = 1;
+    }
+    elseif($this->hometeamgoals < $this->awayteamgoals)
+    {
+      $this->hometeampoints = 0;
+      $this->hometeamvictory = 0;
+      $this->hometeamdraw = 0;
+      $this->hometeamloss = 1;
+
+      $this->awayteampoints = 3;
+      $this->awayteamvictory = 1;
+      $this->awayteamdraw = 0;
+      $this->awayteamloss = 0;
+    }
+    else
+    {
+      $this->hometeampoints = 1;
+      $this->hometeamvictory = 0;
+      $this->hometeamdraw = 1;
+      $this->hometeamloss = 0;
+
+      $this->awayteampoints = 1;
+      $this->awayteamvictory = 0;
+      $this->awayteamdraw = 1;
+      $this->awayteamloss = 0;
+      
+    }
+
+    $stmt->bindParam(':hometeampoints',$this->hometeampoints,PDO::PARAM_INT);
+    $stmt->bindParam(':awayteampoints',$this->awayteampoints,PDO::PARAM_INT);
     $stmt->bindParam(':matchlogjson',$this->matchlogjson,PDO::PARAM_STR);
     $stmt->bindParam(':id',$this->matchid,PDO::PARAM_INT);
     
@@ -103,6 +156,41 @@ class MatchClass
       //echo 'Failed to create a new game. ';
       return 0;
     }
+
+    /** Update table */
+    //$dbh = $this->pdo->getPdoCon();    
+    $query = 'UPDATE tblusertable SET matchesplayed = (matchesplayed+1), goalsfor=(goalsfor+:goalsfor), goalsagainst=(goalsagainst+:goalsagainst), 
+      victory = (victory+:victory), draw = (draw+:draw), loss =  (loss+:loss), points =  (points+:points)      
+      WHERE teamid = :teamid and gameid = :gameid ';
+
+    //We start by updating points for the hometeam.     
+    $stmt = $dbh->prepare($query);
+    $stmt->bindParam(':gameid',$gameid,PDO::PARAM_INT);
+    $stmt->bindParam(':points',$this->hometeampoints,PDO::PARAM_INT);
+    $stmt->bindParam(':goalsfor',$this->hometeamgoals,PDO::PARAM_INT);    
+    $stmt->bindParam(':goalsagainst',$this->awayteamgoals,PDO::PARAM_INT);    
+    $stmt->bindParam(':teamid',$this->hometeamobj->id,PDO::PARAM_INT);
+    $stmt->bindParam(':victory',$this->hometeamvictory,PDO::PARAM_INT);
+    $stmt->bindParam(':loss',$this->hometeamloss,PDO::PARAM_INT);
+    $stmt->bindParam(':draw',$this->hometeamdraw,PDO::PARAM_INT);
+    
+    $stmt->execute();
+
+    //Update awayteam 
+    $stmt = $dbh->prepare($query);    
+    $stmt->bindParam(':gameid',$gameid,PDO::PARAM_INT);
+    $stmt->bindParam(':points',$this->awayteampoints,PDO::PARAM_INT);
+    $stmt->bindParam(':goalsfor',$this->awayteamgoals,PDO::PARAM_INT);    
+    $stmt->bindParam(':goalsagainst',$this->hometeamgoals,PDO::PARAM_INT);    
+    $stmt->bindParam(':teamid',$this->awayteamobj->id,PDO::PARAM_INT);
+    $stmt->bindParam(':victory',$this->awayteamvictory,PDO::PARAM_INT);
+    $stmt->bindParam(':loss',$this->awayteamloss,PDO::PARAM_INT);
+    $stmt->bindParam(':draw',$this->awayteamdraw,PDO::PARAM_INT);
+    
+    $stmt->execute();
+
+    //TODO: Add season to the update. 
+
     //$stmt->execute();
 
     //$result = $stmt->fetch();

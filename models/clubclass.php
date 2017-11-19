@@ -5,6 +5,7 @@ class ClubClass
   var $pdo;
 	var $skill = 0;
   var $name = 'IK Start';
+  var $id = 0;
   
   function __construct(PdoConnection $pdo)
   {
@@ -14,7 +15,7 @@ class ClubClass
   {
     $dbh = $this->pdo->getPdoCon();
 
-    $query = 'SELECT skill,name FROM tblclub WHERE id = :id';
+    $query = 'SELECT id,skill,`name` FROM tblclub WHERE id = :id';
 
     $stmt = $dbh->prepare($query);
 
@@ -26,6 +27,7 @@ class ClubClass
 
     $this->skill = $result['skill'];
     $this->name = $result['name'];
+    $this->id = $result['id'];
 
     //echo $this->skill.' '.$this->name.'<br/><br/>' ;
   }

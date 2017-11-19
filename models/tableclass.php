@@ -27,6 +27,26 @@ class TableClass
 
     //return $result;
   }
+
+  function updateTableFromMatch($teamid,$points,$goalsfor,$goalsagainst,$gameid)
+  {
+    $dbh = $this->pdo->getPdoCon();    
+    $query = 'UPDATE tblusertable SET matchesplayed = (matchesplayed+1), goalsfor=(goalsfor+:goalsfor), goalsagainst=(goalsagainst+:goalsagainst), 
+      victory = (victory+:victory), draw = (draw+:draw), loss =  (loss+:loss), points =  (points+:points)      
+      WHERE teamid = :teamid and gameid = :gameid ORDER BY points DESC';
+
+    $stmt = $dbh->prepare($query);
+    $stmt->bindParam(':gameid',$teamid,PDO::PARAM_INT);
+    $stmt->bindParam(':points',$points,PDO::PARAM_INT);
+    $stmt->bindParam(':goalsfor',$goalsfor,PDO::PARAM_INT);    
+    $stmt->bindParam(':goalsagainst',$goalsagainst,PDO::PARAM_INT);
+    $stmt->bindParam(':victory',$victory,PDO::PARAM_INT);
+    $stmt->bindParam(':teamid',$teamid,PDO::PARAM_INT);
+    $stmt->bindParam(':loss',$loss,PDO::PARAM_INT);
+    $stmt->bindParam(':draw',$draw,PDO::PARAM_INT);
+    
+    $stmt->execute();
+  }
 }
 
 ?>
