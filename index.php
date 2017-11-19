@@ -178,9 +178,37 @@ else if(!empty($_GET['page']) &&  $_GET['page'] == 'signup')
   }
   //$mainview->addHtmlContent($login->createSignUpJavascriptCode());
   $mainview->addHtmlContent($vsignup->showRegisterForm());
-  
-  
+}
+else if(!empty($_GET['page']) &&  $_GET['page'] == 'login')
+{
+  require_once('models/loginclass.php');
+  require_once('views/loginview.php');
 
+  $mainview->makeHeaderView();
+  $mainview->createBootstrapTopMenu();
+
+  $login = new LoginClass($pdo);
+  $vsignup = new vLoginView();  
+  //$mainview->addHtmlContent($login->createSignUpJavascriptCode());
+
+  if(isset($_POST['isposted']))
+  {
+    $returnval = $login->checklogin();
+
+    //var_dump($returnval);
+    //$mainview->addHtmlContent($returnval);
+    /*
+    if($returnval == 0)
+    {
+      $mainview->addHtmlContent($login->errormessage);
+    }
+    else
+    {
+      $mainview->addHtmlContent('<br/><br/>Thank you for signing up!<br/>');
+    }*/
+  }
+  //$mainview->addHtmlContent($login->createSignUpJavascriptCode());
+  $mainview->addHtmlContent($vsignup->showLoginForm());
 }
 
 

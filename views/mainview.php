@@ -56,8 +56,11 @@ class vMainView
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">    
-      <li class="nav-item active">
+    <li class="nav-item active">
       <a class="nav-link" href="index.php?page=signup">Sign up<span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="index.php?page=login">Login<span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item active">
       <a class="nav-link" href="index.php?page=mainview">Main page <span class="sr-only">(current)</span></a>

@@ -111,14 +111,33 @@ class LoginClass
 
   function checkLogin()
   {
-    if($_SESSION['login'] == true)
+    if(isset($_POST['email']) && isset($_POST['password']))
     {
-      return $_SESSION['userid'];
-    }
-    else
-    {
-      return false;
-    }
+      $email = $_POST['email'];
+      $password = $_POST['password'];
+
+      $dbh = $this->pdo->getPdoCon();
+
+      $query = 'SELECT id, firstname, lastname, email, pass FROM tbluser WHERE email=:email ';
+      $stmt = $dbh->prepare($query);
+      $stmt->bindParam(':email',$email,PDO::PARAM_STR);
+      $stmt->execute();
+
+      $result = $stmt->fetch();
+
+      //var_dump($result);
+
+      if(password_verify($password,$result['pass']))
+      {
+        return 1;
+        $_SESSION['login'] = true;
+        $_SESSION['userid'] = $result['id'];        
+      }
+      else
+      {
+        return 0;
+      }
+    } 
   }
 
   function createSignUpJavascriptCode()
