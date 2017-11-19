@@ -59,7 +59,7 @@ class GameClass
     }
     else
     {
-      $this->gameid = 9;
+      $this->gameid = 10;
     }
 
     //Check if we need to save the game. 

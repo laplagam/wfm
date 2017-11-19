@@ -21,6 +21,7 @@ class vTableView
     <th>Draw</th>
     <th>Loss</th>
     <th>Goals</th>
+    <th>Difference</th>
     <th>Points</th>    
     </tr>
     </thead><tbody>';
@@ -37,7 +38,9 @@ class vTableView
         <td>'.$row['victory'].'</td>
         <td>'.$row['draw'].'</td>
         <td>'.$row['loss'].'</td>
-        <td>'.$row['goalsfor'].' - '.$row['goalsagainst'].' ('.bcsub($row['goalsfor'],$row['goalsagainst'],0).')</td>
+        <td>'.$row['goalsfor'].' - '.$row['goalsagainst'].'</td>
+        <td>'.bcsub($row['goalsfor'],$row['goalsagainst'],0).'</td>
+        
         <td>'.$row['points'].'</td>
       </tr>';
       $position++;
