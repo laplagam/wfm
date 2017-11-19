@@ -3,3 +3,32 @@
   background-color:#00ff00;
   color:#000000
 }
+.maincontent
+{
+  width: 1200px;  
+  margin-left:auto;
+  margin-right:auto;
+}
+.centeradjust
+{
+  margin-left:auto;
+  margin-right:auto;
+}
+.clock
+{
+  width:100px;
+  background-color: #00ff00;
+  text-align: center;
+}
+
+.outer-div
+{
+  background-color: #bab9c0;
+  padding: 30px;
+  height: 500px;
+}
+.inner-div
+{
+     margin: auto;
+     width: 100px;      
+}

@@ -13,12 +13,16 @@ class MatchClass
 	var $currentminute = 0;
 	var $hometeamgoals = 0;
 	var $awayteamgoals = 0;
-	var $matchlength = 95;
+  var $matchlength = 95;
+  var $matchid = 0;
 
   var $matchlog;//Currently we only add minute and goals happening.
   var $matchlogjson;//Currently we only add minute and goals happening.
 
   var $matchjs= '';
+
+  var $errormessage='';
+  var $errorcount = 0;
 
 	/*function __construct()
 	{
@@ -33,8 +37,9 @@ class MatchClass
   
   function loadMatchFromId($matchid)
   {
+    $this->matchid = $matchid;
     $dbh = $this->pdo->getPdoCon();
-    $query = 'SELECT hometeamid,awayteamid FROM tblfixtures WHERE id = :id';
+    $query = 'SELECT hometeamid,awayteamid FROM tbluserfixtures WHERE id = :id';
     $stmt = $dbh->prepare($query);
 
     $stmt->bindParam(':id',$matchid,PDO::PARAM_INT);
@@ -61,6 +66,46 @@ class MatchClass
     //echo $this->awayteamobj->name;
     //$this->hometeamobj = $hometeamobj;
 		//$this->awayteamobj = $awayteamobj;
+  }
+
+  function updateMatchToDb()
+  {
+    $dbh = $this->pdo->getPdoCon();
+    $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    $query = 'UPDATE tbluserfixtures SET hometeamgoals = :hometeamgoals, awayteamgoals = :awayteamgoals, isplayed=1, matchlogjson=:matchlogjson  WHERE id = :id';
+    $stmt = $dbh->prepare($query);
+
+    $stmt->bindParam(':hometeamgoals',$this->hometeamgoals,PDO::PARAM_INT);
+    $stmt->bindParam(':awayteamgoals',$this->awayteamgoals,PDO::PARAM_INT);
+    $stmt->bindParam(':matchlogjson',$this->matchlogjson,PDO::PARAM_STR);
+    $stmt->bindParam(':id',$this->matchid,PDO::PARAM_INT);
+    
+    try
+    {
+      $result = $stmt->execute();
+
+      if($result == false)
+      {
+        $errorarray = $stmt->errorInfo();
+        $this->errormessage .= $errorarray[0].' - '.$errorarray[1].' - '.$errorarray[2].'<br/>';
+        $this->errorcount++;
+        return 0;
+      }
+      else{
+        //$this->gameid = $dbh->lastInsertId(); 
+      }
+    }
+    catch(Exception $e)
+    {
+      
+      $this->errormessage .= $e->getMessage();
+      $this->errorcount++;
+      //echo 'Failed to create a new game. ';
+      return 0;
+    }
+    //$stmt->execute();
+
+    //$result = $stmt->fetch();
   }
 
 	function loadTeams(ClubClass $hometeamobj, ClubClass $awayteamobj)

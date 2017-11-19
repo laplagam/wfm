@@ -28,6 +28,8 @@ if(!empty($_GET['page']) &&  $_GET['page'] == 'creategame')
   $mainview->makeHeaderView();
   $mainview->createBootstrapTopMenu();
   $mainview->addHtmlContent($gameview->CreateGameView());
+  
+  
   $mainview->makeFooterView();  
   echo $mainview->htmlout;
   //echo 'test';
@@ -45,10 +47,12 @@ else if(!empty($_GET['page']) &&  $_GET['page'] == 'playmatch')
   $match->loadMatchFromId(309);
   //Let's run the match. 
   $match->runMatch();
+  $match->updateMatchToDb();
   $matchview = new vMatchView($match);
   //Add match to main view
   $mainview->addHtmlContent($matchview->getMatchViewLayout());
   $mainview->addHtmlContent($match->makeMatchJs());
+  //$mainview->addHtmlContent('Error message: '.$match->errormessage.' '.$match->errorcount);
   //Let's add the footer to the site
   
 }

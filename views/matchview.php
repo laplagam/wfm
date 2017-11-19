@@ -13,8 +13,8 @@ class vMatchView
     //Let's make the table that displays the details.$_COOKIE
     $htmlout = '<br/><br/>
       <table id="table_id" class="display table table-hover table-border">		
-      <thead>
-      <tr style="background-color:black;color:white;">
+      <thead class="theader1">
+      <tr >
       <th>'.$this->match->hometeamobj->name.'</th>
       <th> - </th>
       <th>'.$this->match->awayteamobj->name.'</th>
@@ -66,17 +66,20 @@ class vMatchView
 
   function getMatchViewLayout()
   {
-    $htmlout = '<input type="button" onclick="viewMatch()" value="Show match"/><br/><br/>
+    $htmlout = '
     <br/><br/>
-    <div id="matchtimer" class="matchtimer"></div><br/><br/>
+    <div class="centeradjust" align="center"><input type="button" onclick="viewMatch()" value="Start match"/></div>
+    <br/><br/>
+    <div class="outer-div"> <div id="matchtimer" class="clock inner-div" ></div><br/><br/>
+    
     <table id="table_id" class="display table table-hover table-border">		
     <thead>
     <tr style="background-color:black;color:white;">
-      <th style="width:40%;">'.$this->match->hometeamobj->name.'</th>
-      <th style="width:5%;" id="hometeamgoals">0</th>
-      <th style="width:10%;"> - </th>
-      <th style="width:5%;" id="awayteamgoals">0</th>
-      <th style="width:40%;">'.$this->match->awayteamobj->name.'</th>
+      <th style="width:44%;">'.$this->match->hometeamobj->name.'</th>
+      <th style="width:5px;;" id="hometeamgoals">0</th>
+      <th style="width:5px;"> - </th>
+      <th style="width:5px;;" id="awayteamgoals">0</th>
+      <th style="width:44%;">'.$this->match->awayteamobj->name.'</th>
     </tr>
     </thead>
     <tbody>

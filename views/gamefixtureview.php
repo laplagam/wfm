@@ -12,8 +12,8 @@ class vGameFixture
   {
     $htmlout = '<form name="mainpageform" method="POST" action="index.php?page=playmatch"> <br/><br/>
     <table id="table_id" class="display table table-hover table-border table-striped">		
-    <thead>
-    <tr style="background-color:black;color:white;">
+    <thead  class="theader1">
+    <tr>
     <th>Gameweek</th>
     <th>Hometeam</th>
     <th>Awayteam</th> 
