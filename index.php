@@ -28,7 +28,16 @@ if(!empty($_GET['page']) &&  $_GET['page'] == 'creategame')
   $mainview->applyToHeader($game->createGameJavascriptCode());  
   $mainview->makeHeaderView();
   $mainview->createBootstrapTopMenu();
+
+  $gamelist = $game->getUserGames();
+  
+  $mainview->addHtmlContent($gameview->loadGameView($gamelist)); 
   $mainview->addHtmlContent($gameview->CreateGameView()); 
+
+  if(isset($_POST))
+  {
+    var_dump($_POST);
+  }
   
   $mainview->makeFooterView();  
   //echo $mainview->htmlout;
@@ -194,6 +203,8 @@ else if(!empty($_GET['page']) &&  $_GET['page'] == 'login')
   if(isset($_POST['isposted']))
   {
     $returnval = $login->checklogin();
+
+    //TODO: Send to page where you can create game or load game. 
 
     //var_dump($returnval);
     //$mainview->addHtmlContent($returnval);

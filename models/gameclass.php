@@ -70,6 +70,37 @@ class GameClass
 
   }
 
+  function getLeagueList()
+  {
+    $dbh = $this->pdo->getPdoCon();
+    $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    //TODO: Fix when moving on to next season. 
+    $query = 'SELECT id, `name` FROM tblleague ';
+
+    $stmt = $dbh->prepare($query);  
+    $stmt->execute();
+    $result = $stmt->fetchAll();
+
+    return $result;
+  }
+
+  function getTeamList($leagueid=1)
+  {
+    $dbh = $this->pdo->getPdoCon();
+    $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    //TODO: Fix when moving on to next season. 
+    $query = 'SELECT id, `name` FROM tblclub WHERE leagueid = :leagueid';
+
+    $stmt = $dbh->prepare($query);  
+
+    $stmt->bindParam(':leagueid',$leagueid,PDO::PARAM_INT);
+
+    $stmt->execute();
+    $result = $stmt->fetchAll();
+
+    return $result;
+  }
+
   function saveGame()
   {
     $this->gameweek++;
@@ -88,6 +119,25 @@ class GameClass
 
     $stmt->execute();
   }
+
+  function getUserGames()
+  {
+    $dbh = $this->pdo->getPdoCon();
+    $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    //TODO: Fix when moving on to next season. 
+    $query = 'SELECT id, userid, leagueid, clubid, season, gameweek, gamename FROM tblusergame WHERE userid = :userid ';
+
+    $stmt = $dbh->prepare($query);  
+
+    $stmt->bindParam(':userid',$this->userid,PDO::PARAM_INT);
+
+    $stmt->execute();
+
+    $result = $stmt->fetchAll();
+
+    return $result;
+  }
+  
 
   function loadGame()
   {
@@ -138,9 +188,9 @@ class GameClass
   {
     $htmlout = '
     <script type="text/javascript">
-    function submitForm()
+    function submitForm(val)
     {
-      document.getElementById("createthegame").value = 1;
+      document.getElementById("createthegame").value = val;
       document.getElementById("submitGameForm").submit();
     }
     </script>
