@@ -1,5 +1,5 @@
 <?php
-
+//Currently shows the fixture list of upcomming match
 class vMainView
 {
   var $htmlout = '';
@@ -73,7 +73,8 @@ class vMainView
           Game
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="index.php?page=creategame">Create a new game</a>            
+          <a class="dropdown-item" href="index.php?page=creategame">Create a new game</a>
+          <a class="dropdown-item" href="index.php?page=loadgame">Load game</a>
         </div>
       </li>
         <li class="nav-item dropdown">

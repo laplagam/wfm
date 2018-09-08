@@ -19,26 +19,43 @@ class GameClass
   function __construct(PdoConnection $pdo)
   {
     $this->pdo = $pdo;
-
+    
     if(isset($_POST['leagueid']) && is_numeric($_POST['leagueid']))
     {
       $this->leagueid = $_POST['leagueid'];
+      $_SESSION['leagueid'] = $_POST['leagueid'];
+    }
+    else if(isset($_SESSION['leagueid']) && is_numeric($_SESSION['leagueid']))
+    {
+      $this->leagueid = $_SESSION['leagueid'];
     }
     else
     {
       $this->leagueid = 2;
     }
+
     if(isset($_POST['clubid']) && is_numeric($_POST['clubid']))
     {
       $this->clubid = $_POST['clubid'];
+      $_SESSION['clubid'] = $_POST['clubid'];
+    }
+    else if(isset($_SESSION['clubid']) && is_numeric($_SESSION['clubid']))
+    {
+      $this->clubid = $_SESSION['clubid'];
     }
     else
     {
       $this->clubid = 54;
     }
+
     if(isset($_POST['gamename']))
     {
       $this->gamename = $_POST['gamename'];
+      $_SESSION['gamename'] = $_POST['gamename'];
+    }
+    else if(isset($_SESSION['gamename']))
+    {
+      $this->gamename = $_SESSION['gamename'];
     }
     else
     {
@@ -48,18 +65,29 @@ class GameClass
     if(isset($_POST['userid'])  && is_numeric($_POST['userid']))
     {
       $this->userid = $_POST['userid'];
+      $_SESSION['userid'] = $_POST['userid'];
+    }
+    else if(isset($_SESSION['userid']) && is_numeric($_SESSION['userid']))
+    {
+      $this->userid = $_SESSION['userid'];
     }
     else
     {
       $this->userid = 1;
     }
+
     if(isset($_POST['gameid'])  && is_numeric($_POST['gameid']))
     {
       $this->gameid = $_POST['gameid'];
+      $_SESSION['gameid'] = $_POST['gameid'];
+    }
+    else if(isset($_SESSION['gameid']) && is_numeric($_SESSION['gameid']))
+    {
+      $this->gameid = $_SESSION['gameid'];
     }
     else
     {
-      $this->gameid = 10;
+      $this->gameid = 15;
     }
 
     //Check if we need to save the game. 
@@ -182,6 +210,7 @@ class GameClass
       //echo 'Failed to create a new game. ';
       return 0;
     }
+    echo $this->errormessage;
   }
 
   function createGameJavascriptCode()
@@ -192,6 +221,19 @@ class GameClass
     {
       document.getElementById("createthegame").value = val;
       document.getElementById("submitGameForm").submit();
+    }
+    </script>
+    ';
+    return $htmlout;
+  }
+  function loadGameJavascriptCode()
+  {
+    $htmlout = '
+    <script type="text/javascript">
+    function loadGameForm(val)
+    {
+      document.getElementById("gameid").value = val;
+      document.getElementById("loadForm").submit();
     }
     </script>
     ';

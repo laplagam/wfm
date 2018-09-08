@@ -42,8 +42,8 @@ class vGameView
       $leagueid = 1;
     }
 
-    //Let's make the table that displays the details.$_COOKIE
-    $htmlout = '<br/><br/>
+    //Let's make the table that displays the details.
+    $htmlout = '<br/><br/><form method="POST" name="submitGameForm" id="submitGameForm" action="index.php?page=creategame">
     <div class="table-responsive">
       <table id="table_id" class="display table table-hover table-bordered table-striped">		
       <thead>
@@ -109,8 +109,8 @@ class vGameView
 
   function loadGameView($gamelist)
   {
-    //Let's make the table that displays the details.$_COOKIE
-    $htmlout = '<br/><br/><form method="POST" name="submitGameForm" id="submitGameForm" action="index.php?page=creategame">
+    //Let's make the table that displays the details.
+    $htmlout = '<br/><br/><form method="POST" name="loadForm" id="loadForm" action="index.php?page=loadgame">
     <div class="table-responsive">
       <table id="table_id" class="display table table-hover table-bordered table-striped">		
       <thead>
@@ -119,20 +119,22 @@ class vGameView
         <th>Gameweek</th>        
         <th></th>
       </tr></thead>
-      <tbody>';
+      <tbody>
+      <input type="hidden" id="gameid" name="gameid" value=""/>      
+      ';
 
       foreach($gamelist as $row)
       {
         $htmlout .='<tr>
         <td>'.$row['gamename'].'</td>
         <td>'.$row['gameweek'].'</td>
-        <td><input type="submit" class="btn-primary" value="Load game"/></td>        
+        <td><input type="button" class="btn-primary" onClick="loadGameForm('.$row['id'].')" value="Load game"/></td>        
         </tr>      ';
       }     
       $htmlout .='</tbody>     
       </table>
-      </div>
-      
+      </div>      
+      </form>
     ';
 
     return $htmlout;

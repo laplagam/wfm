@@ -17,13 +17,13 @@
 .clock
 {
   width:100px;
-  background-color: #00ff00;
+  background-color: #FFFFFF;
   text-align: center;
 }
 
 .outer-div
 {
-  background-color: #bab9c0;
+  background-color: #e9e8ee;
   padding: 30px;
   height: 500px;
 }

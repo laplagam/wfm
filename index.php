@@ -10,6 +10,7 @@ require_once('models/clubclass.php');
 require_once('models/sqlconnclass.php');
 require_once('views/mainview.php');
 
+//echo 'test';
 
 $pdo = new PdoConnection();
 //Let's create the main view. 
@@ -17,7 +18,49 @@ $mainview = new vMainView();
 //Setting up header and top menu. 
 
 //Don't mix game with match. Game clease is to create/load or delete a user created game. 
-if(!empty($_GET['page']) &&  $_GET['page'] == 'creategame')
+if(!empty($_GET['page']) &&  $_GET['page'] == 'loadgame')
+{  
+  require_once('models/gameclass.php');
+  require_once('models/gamefixtureclass.php');
+  require_once('views/gameview.php');
+
+  $game =  new GameClass($pdo);  
+  $gameview = new vGameView($game);
+  $gamefixture = new GameFixtureClass($pdo);
+  
+  $mainview->applyToHeader($game->loadGameJavascriptCode());  
+  $mainview->makeHeaderView();
+  $mainview->createBootstrapTopMenu();
+
+  if(isset($_POST['isposted']))
+  {
+    //TODO: Make the load game that sets the game details.
+    $returnval = $login->loadGame();
+    if($returnval == 0)
+    {
+      $mainview->addHtmlContent($login->errormessage);
+    }
+    else
+    {
+      $mainview->addHtmlContent('<br/><br/>Game has been loaded<br/>');
+    }
+  }
+
+  $gamelist = $game->getUserGames();
+  
+  $mainview->addHtmlContent($gameview->loadGameView($gamelist)); 
+
+  
+
+  /*if(isset($_POST))
+  {
+    var_dump($_POST);
+  }
+  */
+  $mainview->makeFooterView();  
+
+}
+else if(!empty($_GET['page']) &&  $_GET['page'] == 'creategame')
 {  
   require_once('models/gameclass.php');
   require_once('views/gameview.php');
@@ -31,14 +74,14 @@ if(!empty($_GET['page']) &&  $_GET['page'] == 'creategame')
 
   $gamelist = $game->getUserGames();
   
-  $mainview->addHtmlContent($gameview->loadGameView($gamelist)); 
+  //$mainview->addHtmlContent($gameview->loadGameView($gamelist)); 
   $mainview->addHtmlContent($gameview->CreateGameView()); 
 
-  if(isset($_POST))
+  /*if(isset($_POST))
   {
     var_dump($_POST);
   }
-  
+  */
   $mainview->makeFooterView();  
   //echo $mainview->htmlout;
   //echo 'test';
@@ -68,7 +111,8 @@ else if(!empty($_GET['page']) &&  $_GET['page'] == 'playmatch')
   $gamefixture = new GameFixtureClass($pdo);
   $gamefixture->upcommingMatches($game->gameid,$game->gameweek,$game->season);//TODO: Connect to user and game loaded. 
 
-  //$mainview->addHtmlContent($game->gameid.' '.$game->gameweek.' '.$game->season);
+  $mainview->addHtmlContent($game->gameid.' - '.$game->gameweek.' - '.$game->season.'<br/>');
+  //$mainview->addHtmlContent($_SESSION['gameid'].' - '.$_SESSION['gameweek'].' - '.$_SESSION['season']);
 
   //$gamefixture->matchlist;
   $counter = 0;
@@ -144,21 +188,7 @@ else if(!empty($_GET['page']) &&  $_GET['page'] == 'mainview')
   $gamefixture = new GameFixtureClass($pdo);
   $gamefixture->upcommingMatches($game->gameid,$game->gameweek,$game->season);
   $vGameFixture = new vGameFixture($gamefixture);
-  $mainview->addHtmlContent($vGameFixture->showFixtures());//Add gameid parameter when going live. 
-  
-
-  
-
-  //$match = new MatchClass($pdo,new ClubClass($pdo));
-  //Let's create a match. 
-  //$match->loadMatchFromId(309);
-  //Let's run the match. 
-  //$match->runMatch();
-  //$matchview = new vMatchView($match);
-  //Add match to main view
-  //$mainview->addHtmlContent($matchview->getMatchViewLayout());
-  //$mainview->addHtmlContent($match->makeMatchJs());
-  //Let's add the footer to the site
+  $mainview->addHtmlContent($vGameFixture->showFixtures());//Add gameid parameter when going live.  
   
 }
 else if(!empty($_GET['page']) &&  $_GET['page'] == 'signup')
