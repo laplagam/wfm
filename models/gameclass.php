@@ -209,8 +209,9 @@ class GameClass
       $this->errorcount++;
       //echo 'Failed to create a new game. ';
       return 0;
-    }
+    }    
     echo $this->errormessage;
+    return 1;
   }
 
   function createGameJavascriptCode()
@@ -279,12 +280,15 @@ class GameClass
 
     // Let's load all football clubs to the save game
     $query = 'INSERT INTO tbluserclub(id,`name`,skill,countryid,leaguelevel,leagueid,isplayer,userid,gameid) 
-      SELECT id,`name`,skill,countryid,leaguelevel,leagueid,isplayer,:userid,:gameid FROM tblclub WHERE leagueid = :leagueid ';
+      SELECT id,`name`,skill,countryid,leaguelevel,leagueid,if(id = '.$this->clubid.',1,0) ,:userid,:gameid FROM tblclub WHERE leagueid = :leagueid ';
+
+    //$isplayer = 0;
 
     $stmt = $dbh->prepare($query);
     $stmt->bindParam(':userid',$this->userid,PDO::PARAM_INT);
     $stmt->bindParam(':gameid',$this->gameid,PDO::PARAM_INT);
     $stmt->bindParam(':leagueid',$this->leagueid,PDO::PARAM_INT);
+    //$stmt->bindParam(':isplayer',$isplayer,PDO::PARAM_INT);
 
     // try/catch nightmare code to verify whether the insert was successful. 
     try

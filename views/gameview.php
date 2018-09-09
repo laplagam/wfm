@@ -121,6 +121,7 @@ class vGameView
       </tr></thead>
       <tbody>
       <input type="hidden" id="gameid" name="gameid" value=""/>      
+      <input type="hidden" id="isposted" name="isposted" value=""/>
       ';
 
       foreach($gamelist as $row)
