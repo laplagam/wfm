@@ -21,7 +21,7 @@ class vGameView
     }
     else
     {
-      $htmlout .= 'Game was successfully created. <input type="button" class="btn-primary" value="Go to game"/> ';
+      $htmlout .= '<br/>Game was successfully created. <a href="?page=mainview"><br/><br/><input type="button" class="btn-primary" value="Go to game"/></a> ';
     }
     
     return $htmlout;
