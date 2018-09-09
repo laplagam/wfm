@@ -1,5 +1,7 @@
 <?php
 
+/* Class for fixtures handling in the game. */
+
 class GameFixtureClass
 {
   var $pdo;

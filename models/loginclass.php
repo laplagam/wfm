@@ -1,5 +1,7 @@
 <?php
 
+/* Login class*/
+
 class LoginClass
 {
   var $pdo;

@@ -1,5 +1,7 @@
 <?php
 
+/* This class is made for create, load and save games. Should not be mixed with Match class which is for football matches. */
+
 class GameClass
 {
   //TODO: Create log file to store everytime an exception happens

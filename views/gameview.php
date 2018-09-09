@@ -1,5 +1,7 @@
 <?php
 
+/* View for game creations. Do not mixup with Match which is for viewing football matches. */
+
 class vGameView
 {
   var $game;  
