@@ -37,7 +37,7 @@ if(!empty($_GET['page']) &&  $_GET['page'] == 'loadgame')
     //TODO: Make the load game that sets the game details.
     $returnval = $game->loadGame();
     //Test to verify data loaded in game cobject.
-    $mainview->addHtmlContent($game->gameid.' '.$game->gameid.' '.$game->gameid.'<br/>');
+    //$mainview->addHtmlContent($game->gameid.' '.$game->gameid.' '.$game->gameid.'<br/>');
 
     if($returnval == 0)
     {
