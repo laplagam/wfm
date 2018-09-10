@@ -1,5 +1,7 @@
 <?php
 
+/** This class is made to create and upload fixture lists.  */
+
 class mFixtureClass
 {
   var $pdo;

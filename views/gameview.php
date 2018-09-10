@@ -1,5 +1,7 @@
 <?php
 
+/* View for game creations. Do not mixup with Match which is for viewing football matches. */
+
 class vGameView
 {
   var $game;  
@@ -19,7 +21,7 @@ class vGameView
     }
     else
     {
-      $htmlout .= 'Game was successfully created. <input type="button" class="btn-primary" value="Go to game"/> ';
+      $htmlout .= '<br/>Game was successfully created. <a href="?page=mainview"><br/><br/><input type="button" class="btn-primary" value="Go to game"/></a> ';
     }
     
     return $htmlout;
@@ -121,6 +123,7 @@ class vGameView
       </tr></thead>
       <tbody>
       <input type="hidden" id="gameid" name="gameid" value=""/>      
+      <input type="hidden" id="isposted" name="isposted" value=""/>
       ';
 
       foreach($gamelist as $row)

@@ -1,6 +1,6 @@
 <?php
 
-// GAME GENERATOR
+// Football match generation and set up. 
 
 class MatchClass
 {
@@ -192,7 +192,6 @@ class MatchClass
     //TODO: Add season to the update. 
 
     //$stmt->execute();
-
     //$result = $stmt->fetch();
   }
 

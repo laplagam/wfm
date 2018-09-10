@@ -1,5 +1,5 @@
 <?php
-
+/* This class contains the details of any football club. **/
 class ClubClass
 {
   var $pdo;
