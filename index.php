@@ -114,7 +114,7 @@ else if(!empty($_GET['page']) &&  $_GET['page'] == 'playmatch')
   $gamefixture = new GameFixtureClass($pdo);
   $gamefixture->upcommingMatches($game->gameid,$game->gameweek,$game->season);//TODO: Connect to user and game loaded. 
   //Show game details.
-  $mainview->addHtmlContent($game->gameid.' '.$game->gameweek.' '.$game->season.'<br/>');
+  //$mainview->addHtmlContent($game->gameid.' '.$game->gameweek.' '.$game->season.'<br/>');
 
   //$mainview->addHtmlContent($game->gameid.' - '.$game->gameweek.' - '.$game->season.'<br/>');
   //$mainview->addHtmlContent($_SESSION['gameid'].' - '.$_SESSION['gameweek'].' - '.$_SESSION['season']);
