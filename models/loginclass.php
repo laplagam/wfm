@@ -151,18 +151,18 @@ class LoginClass
     }
     </script>
     <script type="text/javascript">
-    $(function () {
-        $("#submitbutton").click(function () {
-            var password = $("#password").val();
-            var confirmPassword = $("#confirmpassword").val();
-            if (password != confirmPassword) {
-                alert("Passwords do not match.");
-                return false;
-            }
-            return true;
+        $(function () {
+            $("#submitbutton").click(function () {
+                var password = $("#password").val();
+                var confirmPassword = $("#confirmpassword").val();
+                if (password != confirmPassword) {
+                    alert("Passwords do not match.");
+                    return false;
+                }
+                return true;
+            });
         });
-    });
-</script>
+    </script>
     ';
     return $htmlout;
   }

@@ -238,13 +238,13 @@ class MatchClass
 	{
 		if($this->checkIfGoalScored($this->hometeamobj->skill))
 		{
-			$this->matchlog[$currentminute]['happening'] = $currentminute.' - '.$this->hometeamobj->name.' just scored a fantastic goal!';
+			$this->matchlog[$currentminute]['happening'] = $currentminute.' - Goal by '.trim($this->hometeamobj->name).'!';
 			$this->matchlog[$currentminute]['teamthatscored'] = 'hometeam';
 			$this->hometeamgoals++;
 		}
 		elseif($this->checkIfGoalScored($this->awayteamobj->skill)) 
 		{
-			$this->matchlog[$currentminute]['happening'] = $currentminute.' - '.$this->awayteamobj->name.' just scored a fantastic goal!';			
+			$this->matchlog[$currentminute]['happening'] = $currentminute.' - Goal by '.trim($this->awayteamobj->name).'!';			
 			$this->matchlog[$currentminute]['teamthatscored'] = 'awayteam';
 			$this->awayteamgoals++;
 		}

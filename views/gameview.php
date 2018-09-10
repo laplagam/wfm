@@ -33,7 +33,16 @@ class vGameView
     {
       return $this->gameHasBeenCreated();
     }
-    //Let's make the table that displays the details.$_COOKIE
+
+    if(isset($_POST['leagueid'] )&& is_numeric($_POST['leagueid']))
+    {
+      $leagueid = $_POST['leagueid'];
+    }
+    else{
+      $leagueid = 1;
+    }
+
+    //Let's make the table that displays the details.
     $htmlout = '<br/><br/><form method="POST" name="submitGameForm" id="submitGameForm" action="index.php?page=creategame">
     <div class="table-responsive">
       <table id="table_id" class="display table table-hover table-bordered table-striped">		
@@ -49,11 +58,11 @@ class vGameView
         <td>
           <input type="hidden" name="userid" id="userid" value="'.$this->game->userid.'"/>
           <input type="hidden" name="createthegame" id="createthegame" value="0"/>
-          <input type="text" id="leagueid" name="leagueid" value="'.$this->game->leagueid.'"/>           
+          '.$this->createLeagueSelect($this->game->getLeagueList()).'
         </td>
-        <td><input type="text" id="clubid" name="clubid" value="'.$this->game->clubid.'"/></td>
+        <td>'.$this->createTeamSelect($this->game->getTeamList($leagueid)).'</td>
         <td><input type="text" id="gamename" name="gamename" value="'.$this->game->gamename.'"/></td>
-        <td><input type="button" class="btn-primary" onClick="submitForm()" value="Create game"/></td>
+        <td><input type="button" class="btn-primary" onClick="submitForm(1)" value="Create game"/></td>
       </tr>      
       </tbody>     
       </table>
@@ -62,7 +71,74 @@ class vGameView
     ';
 
     return $htmlout;
-  }  
+  } 
+  
+  function createTeamSelect($teamlist)
+  {
+    $htmlout = '<select name="teamid" id="teamid" >';
+    foreach($teamlist as $row)
+    {     
+      $htmlout .= '<option value="'.$row['id'].'" >'.utf8_encode($row['name']).'</option>';      
+    }
+    $htmlout .='</select>';
+
+    return $htmlout;  
+  }
+
+
+
+  function createLeagueSelect($leaguelist)
+  {
+    $htmlout = '<select name="leagueid" id="leagueid" onChange="submitForm(0)">';
+    foreach($leaguelist as $row)
+    {
+      if(isset($_POST['leagueid']) && $_POST['leagueid'] == $row['id'])
+      {
+        $htmlout .= '<option value="'.$row['id'].'" selected="selected">'.$row['name'].'</option>';
+      }
+      else
+      {
+        $htmlout .= '<option value="'.$row['id'].'" >'.$row['name'].'</option>';
+      }
+      
+    }
+    $htmlout .='</select>';
+
+    return $htmlout;    
+  }
+
+  function loadGameView($gamelist)
+  {
+    //Let's make the table that displays the details.
+    $htmlout = '<br/><br/><form method="POST" name="loadForm" id="loadForm" action="index.php?page=loadgame">
+    <div class="table-responsive">
+      <table id="table_id" class="display table table-hover table-bordered table-striped">		
+      <thead>
+      <tr class="theader1">
+        <th>Game</th>
+        <th>Gameweek</th>        
+        <th></th>
+      </tr></thead>
+      <tbody>
+      <input type="hidden" id="gameid" name="gameid" value=""/>      
+      ';
+
+      foreach($gamelist as $row)
+      {
+        $htmlout .='<tr>
+        <td>'.$row['gamename'].'</td>
+        <td>'.$row['gameweek'].'</td>
+        <td><input type="button" class="btn-primary" onClick="loadGameForm('.$row['id'].')" value="Load game"/></td>        
+        </tr>      ';
+      }     
+      $htmlout .='</tbody>     
+      </table>
+      </div>      
+      </form>
+    ';
+
+    return $htmlout;
+  }
 }
 
 ?>
